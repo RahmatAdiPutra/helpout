@@ -23,8 +23,8 @@ class TestController extends Controller
     public function index(Request $request)
     {
         $this->seedSetting();
-        return $this->seed($request);
         return $this->seedTest();
+        return $this->seed($request);
     }
 
     protected function seedTest()

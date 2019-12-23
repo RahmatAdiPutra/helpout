@@ -1,0 +1,8 @@
+.auto-scroll {
+    overflow: auto
+}
+
+#update:hover, #delete:hover {
+    background-color: darkgray;
+    cursor: pointer;
+}

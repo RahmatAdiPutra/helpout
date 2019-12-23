@@ -27,7 +27,7 @@ class CreateCustomersTable extends Migration
             $table->timestamp('email_verified_at')->nullable();
             $table->string('token')->nullable();
             $table->string('password')->nullable();
-            $table->enum('status', ['Non Member', 'Basic', 'Premium'])->default('Basic');
+            $table->enum('status', ['Default', 'Basic', 'Premium'])->default('Basic');
             $table->rememberToken();
             $table->string('updated_by')->nullable();
             $table->timestamps();

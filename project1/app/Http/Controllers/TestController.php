@@ -22,8 +22,50 @@ class TestController extends Controller
 {
     public function index(Request $request)
     {
-        $data = [];
+        $this->seedSetting();
+        return $this->seed($request);
+        return $this->seedTest();
+    }
 
+    protected function seedTest()
+    {
+        $data = [];
+        $faker = \Faker\Factory::create();
+        $gender = $faker->randomElement(Setting::get('gender'));
+        $positionId = Position::pluck('id');
+        $discount = $faker->randomFloat(null,0,1);
+
+        $data['faker']['gender'] = $gender;
+        $data['faker']['creditCardType'] = $faker->creditCardType;
+        $data['faker']['jobTitle'] = $faker->jobTitle;
+        $data['faker']['positionId'] = $faker->randomElement($positionId);
+        $data['faker']['discount'] = $faker->randomElement([0, $discount]);
+
+        $data['gender'] = Setting::get('gender');
+        $data['religion'] = Setting::get('religion');
+        $data['customer'] = Setting::get('customer');
+        $data['payment'] = Setting::get('payment');
+
+        // if (!in_array('Canceled', $data['payment']['allow'])) {
+        //     echo 'tidak ada';
+        // } else {
+        //     echo 'ada';
+        // }
+
+        // $menuPermission = Setting::get('menuPermission');
+
+        // foreach ($menuPermission['menu'] as $vMenu) {
+        //     foreach ($menuPermission['permission'] as $vPermission) {
+        //         $data[$vMenu][] = $vMenu.$vPermission;
+        //     }
+        // }
+
+        return $data;
+        return 'Insert data fake';
+    }
+
+    protected function seedSetting()
+    {
         $menuPermission = [
             'menu' => [
                 'Position.',
@@ -46,51 +88,43 @@ class TestController extends Controller
                 'Delete'
             ]
         ];
+        $gender = [
+            'Male',
+            'Female'
+        ];
+        $religion = [
+            'Islam',
+            'Kristen',
+            'Hindu',
+            'Budha',
+            'Konghucu'
+        ];
+        $customer = [
+            'status' => ['Default', 'Basic', 'Premium'],
+            'allow' => ['Basic', 'Premium']
+        ];
+        $payment = [
+            'status' => ['Submitted', 'Completed', 'Canceled'],
+            'allow' => ['Submitted', 'Completed']
+        ];
 
-        Setting::set('checkPayment', 'Canceled');
         Setting::set('menuPermission', $menuPermission);
-
-        return $this->seedTest();
-        return $this->seed($request);
-    }
-
-    protected function seedTest()
-    {
-        $data = [];
-        $faker = \Faker\Factory::create();
-        $gender = $faker->randomElement(['Male', 'Female']);
-        $positionId = Position::pluck('id');
-        $discount = $faker->randomFloat(null,0,1);
-
-        $data['faker']['gender'] = $gender;
-        $data['faker']['creditCardType'] = $faker->creditCardType;
-        $data['faker']['jobTitle'] = $faker->jobTitle;
-        $data['faker']['positionId'] = $faker->randomElement($positionId);
-        $data['faker']['discount'] = $faker->randomElement([0, $discount]);
-
-        // $menuPermission = Setting::get('menuPermission');
-
-        // foreach ($menuPermission['menu'] as $vMenu) {
-        //     foreach ($menuPermission['permission'] as $vPermission) {
-        //         $data[$vMenu][] = $vMenu.$vPermission;
-        //     }
-        // }
-
-        return $data;
-        return 'Insert data fake';
+        Setting::set('gender', $gender);
+        Setting::set('religion', $religion);
+        Setting::set('customer', $customer);
+        Setting::set('payment', $payment);
     }
 
     protected function seedRolePermission()
     {
         
         $faker = \Faker\Factory::create();
-        $role = ['Admin', 'Operator', 'Cashier'];
         $menuPermission = Setting::get('menuPermission');
 
-        foreach ($role as $r) {
+        for ($i = 0; $i < 2; $i++) {
             $employeeId = Employee::pluck('id');
             Role::create([
-                'name' => $r,
+                'name' => $faker->word,
                 'updated_by' => $faker->randomElement($employeeId),
             ]);
         }
@@ -200,14 +234,14 @@ class TestController extends Controller
 
         for ($i = 0; $i < $totalRow; $i++) {
             $positionId = Position::pluck('id');
-            $gender = $faker->randomElement(['Male', 'Female']);
+            $gender = $faker->randomElement(Setting::get('gender'));
             Employee::create([
                 'position_id' => $faker->randomElement($positionId),
                 'id_card_number' => $faker->uuid,
                 'name' => $faker->name($gender),
                 'gender' => $gender,
                 'birthday' => $faker->date('Y-m-d'),
-                'religion' => $faker->randomElement(['Islam', 'Kristen', 'Hindu', 'Budha', 'Konghucu']),
+                'religion' => $faker->randomElement(Setting::get('religion')),
                 'city' => $faker->city,
                 'address' => $faker->address,
                 'phone_number' => $faker->phoneNumber,
@@ -244,23 +278,22 @@ class TestController extends Controller
     protected function seedCustomer($totalRow = 10)
     {
         $faker = \Faker\Factory::create();
-        $gender = $faker->randomElement(['Male', 'Female']);
 
         for ($i = 0; $i < $totalRow; $i++) {
             $employeeId = Employee::pluck('id');
-            $gender = $faker->randomElement(['Male', 'Female']);
+            $gender = $faker->randomElement(Setting::get('gender'));
             Customer::create([
                 'id_card_number' => $faker->uuid,
                 'name' => $faker->name($gender),
                 'gender' => $gender,
                 'birthday' => $faker->date('Y-m-d'),
-                'religion' => $faker->randomElement(['Islam', 'Kristen', 'Hindu', 'Budha', 'Konghucu']),
+                'religion' => $faker->randomElement(Setting::get('religion')),
                 'city' => $faker->city,
                 'address' => $faker->address,
                 'phone_number' => $faker->phoneNumber,
                 'email' => $faker->randomNumber.$faker->freeEmail,
                 'password' => $faker->sha256,
-                'status' => $faker->randomElement(['Basic', 'Premium']),
+                'status' => $faker->randomElement(Setting::get('customer')['allow']),
                 'updated_by' => $faker->randomElement($employeeId)
             ]);
         }
@@ -275,7 +308,7 @@ class TestController extends Controller
         for ($i = 0; $i < $totalRow; $i++) {
             $employeeId = Employee::pluck('id');
             ItemType::create([
-                'name' => $faker->randomElement(['Accessories', 'Clothing']),
+                'name' => $faker->word,
                 'updated_by' => $faker->randomElement($employeeId)
             ]);
         }
@@ -359,13 +392,11 @@ class TestController extends Controller
             $payment->card_number = $faker->creditCardNumber;
             $payment->due_date = Carbon::now()->addDay(1);
             $payment->total_amount = $total->sum('amount');
-            $payment->status = $faker->randomElement(['Submitted', 'Completed', 'Canceled']);
+            $payment->status = $faker->randomElement(Setting::get('payment')['status']);
             $payment->updated_by = $order->updated_by;
             $payment->save();
 
-            $checkPayment = Setting::get('checkPayment');
-
-            if ($payment->status == $checkPayment) {
+            if (!in_array($payment->status, Setting::get('payment')['allow'])) {
                 foreach ($order->items as $key => $value) {
                     $item = Item::find($value->pivot->item_id);
                     $item->stock = $item->stock + $value->pivot->quantity;

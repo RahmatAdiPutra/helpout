@@ -50,3 +50,6 @@
 <script src="{{ asset('js/page.js') }}"></script>
 
 @yield('jsSection')
+<script>
+    window.dataAuth = {!! json_encode(\App\Models\Employee::inRandomOrder()->first()) !!};
+</script>

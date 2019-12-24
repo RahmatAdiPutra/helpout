@@ -11,7 +11,7 @@
             <form role="form" id="form" autocomplete="off">
                 <div class="modal-body" id="form-body">
                     <input type="text" class="form-control" id="id" name="id" hidden>
-                    <input type="text" class="form-control" id="updated_by" name="updated_by" value="1" hidden>
+                    <input type="text" class="form-control" id="updated_by" name="updated_by" hidden>
                     <div class="form-group">
                         <label for="name">Name</label>
                         <input type="text" class="form-control" id="name" name="name" placeholder="Enter role name" required>

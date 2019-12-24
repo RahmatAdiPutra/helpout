@@ -19,7 +19,7 @@ class CreateOrderHasItemsTable extends Migration
             $table->unsignedBigInteger('item_id');
             $table->decimal('price', 10, 2);
             $table->integer('quantity');
-            $table->decimal('discount', 3, 2);
+            $table->decimal('discount', 3, 2)->nullable();
             $table->decimal('amount', 10, 2);
 
             $table->foreign('order_id')->references('id')->on('orders')->onDelete('cascade')->onUpdate('cascade');

@@ -20,13 +20,14 @@ class ItemController extends Controller
         $sortableColumns = [
             '1' => 'item_type_id',
             '2' => 'name',
-            '3' => 'price',
-            '4' => 'stock',
-            '5' => 'discount',
-            '6' => 'description',
-            '7' => 'created_at',
-            '8' => 'updated_at',
-            '9' => 'updated_by'
+            '3' => 'purchase',
+            '4' => 'price',
+            '5' => 'stock',
+            '6' => 'discount',
+            '7' => 'description',
+            '8' => 'created_at',
+            '9' => 'updated_at',
+            '10' => 'updated_by'
         ];
 
         if (isset($sortableColumns[$order[0]['column']])) {

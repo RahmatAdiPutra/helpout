@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Api\ItemHistoryRequest;
+use App\Models\Item;
 use App\Models\ItemHistory;
 use Illuminate\Http\Request;
 
@@ -19,10 +20,13 @@ class ItemHistoryController extends Controller
         $order = $request->get('order');
         $sortableColumns = [
             '1' => 'item_id',
-            '2' => 'quantity',
-            '3' => 'created_at',
-            '4' => 'updated_at',
-            '5' => 'updated_by'
+            '2' => 'purchase',
+            '3' => 'price',
+            '4' => 'quantity',
+            '5' => 'discount',
+            '6' => 'created_at',
+            '7' => 'updated_at',
+            '8' => 'updated_by'
         ];
 
         if (isset($sortableColumns[$order[0]['column']])) {
@@ -36,7 +40,8 @@ class ItemHistoryController extends Controller
         $searchTerm = $request->get('search');
         if (empty($searchTerm['value']) === false) {
             $q = '%' . str_replace(' ', '%', trim($searchTerm['value'])) . '%';
-            $query->where('item_id', 'like', $q);
+            $q = Item::select('id')->where('name', 'like', $q)->pluck('id');
+            $query->whereIn('item_id', $q);
         }
 
         // for get data total and last page,

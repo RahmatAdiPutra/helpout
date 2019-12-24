@@ -21,12 +21,14 @@
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1 class="m-0 text-dark"></h1>
+                    <div class="row mb-2">
+                        <div class="col-sm-5">
+                            <div id="toggle-hide-column"></div>
+                        </div>
+                    </div>
                 </div><!-- /.col -->
                 <div class="col-sm-6">
-                    <button type="button" class="btn btn-default float-sm-right" data-toggle="modal" data-target="#modalForm" id="create">
-                        Create
-                    </button>
+                    <button type="button" class="btn btn-default float-sm-right" data-toggle="modal" data-target="#modalForm" id="create">Create</button>
                 </div><!-- /.col -->
             </div><!-- /.row -->
         </div><!-- /.container-fluid -->
@@ -38,25 +40,7 @@
         <div class="container-fluid">
             <div class="auto-scroll">
                 <table id="detailedTable" class="table table-bordered table-hover">
-                    <thead>
-                    <tr>
-                        <th>No</th>
-                        <th>ID Card Number</th>
-                        <th>Name</th>
-                        <th>Gender</th>
-                        <th>Birthday</th>
-                        <th>Religion</th>
-                        <th>City</th>
-                        <th>Address</th>
-                        <th>Phone Number</th>
-                        <th>Email</th>
-                        <th>Status</th>
-                        <th>Created at</th>
-                        <th>Updated at</th>
-                        <th>Updated by</th>
-                        <th></th>
-                    </tr>
-                    </thead>
+                    <thead></thead>
                 </table>
             </div>
         </div><!-- /.container-fluid -->

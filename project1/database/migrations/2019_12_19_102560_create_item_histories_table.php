@@ -16,7 +16,10 @@ class CreateItemHistoriesTable extends Migration
         Schema::create('item_histories', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->unsignedBigInteger('item_id');
-            $table->integer('quantity');
+            $table->decimal('purchase', 10, 2);
+            $table->decimal('price', 10, 2);
+            $table->integer('quantity')->default(0);
+            $table->decimal('discount', 3, 2)->nullable();
             $table->string('updated_by')->nullable();
             $table->timestamps();
             $table->softDeletes();

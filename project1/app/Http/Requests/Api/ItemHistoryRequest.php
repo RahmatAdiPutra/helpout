@@ -2,6 +2,7 @@
 
 namespace App\Http\Requests\Api;
 
+use App\Models\Item;
 use App\Models\ItemHistory;
 use Illuminate\Foundation\Http\FormRequest;
 
@@ -26,7 +27,10 @@ class ItemHistoryRequest extends FormRequest
     {
         return [
             'item_id' => ['required'],
+            'purchase' => ['required'],
+            'price' => ['required'],
             'quantity' => ['required'],
+            'discount' => ['required'],
             'updated_by' => []
         ];
     }
@@ -42,6 +46,6 @@ class ItemHistoryRequest extends FormRequest
         foreach ($post as $field => $value) {
             $itemHistory->$field = $value;
         }
-        $itemHistory->save();
+        $itemHistory->save();        
     }
 }

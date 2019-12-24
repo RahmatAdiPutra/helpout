@@ -328,10 +328,12 @@ class TestController extends Controller
             $employeeId = Employee::pluck('id');
             $itemTypeId = ItemType::pluck('id');
             $discount = $faker->randomFloat(null, 0, 1);
+            $purchase = $faker->numberBetween(20000, 1000000);
             $item = Item::create([
                 'item_type_id' => $faker->randomElement($itemTypeId),
                 'name' => $faker->word,
-                'price' => $faker->numberBetween(20000, 1000000),
+                'purchase' => $purchase,
+                'price' => $faker->numberBetween($purchase, 1000000),
                 'stock' => $faker->numberBetween(0, 100),
                 'discount' => $faker->randomElement([0, $discount]),
                 'description' => $faker->text(50),
@@ -339,7 +341,10 @@ class TestController extends Controller
             ]);
             ItemHistory::create([
                 'item_id' => $item->id,
+                'purchase' => $item->purchase,
+                'price' => $item->price,
                 'quantity' => $item->stock,
+                'discount' => $item->discount,
                 'updated_by' => $item->updated_by
             ]);
         }

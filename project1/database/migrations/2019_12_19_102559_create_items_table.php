@@ -17,9 +17,10 @@ class CreateItemsTable extends Migration
             $table->bigIncrements('id');
             $table->unsignedBigInteger('item_type_id');
             $table->string('name');
+            $table->decimal('purchase', 10, 2);
             $table->decimal('price', 10, 2);
-            $table->integer('stock');
-            $table->decimal('discount', 3, 2);
+            $table->integer('stock')->default(0);
+            $table->decimal('discount', 3, 2)->nullable();
             $table->text('description');
             $table->string('updated_by')->nullable();
             $table->timestamps();

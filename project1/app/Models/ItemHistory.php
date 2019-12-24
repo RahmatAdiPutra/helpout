@@ -11,7 +11,10 @@ class ItemHistory extends Model
 
     protected $fillable = [
         'item_id',
+        'purchase',
+        'price',
         'quantity',
+        'discount',
         'updated_by'
     ];
 

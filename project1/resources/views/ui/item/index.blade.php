@@ -7,6 +7,9 @@
 
 @section('jsSection')
 <script src="{{ asset('js/ui/item.js') }}"></script>
+<script>
+    window.dataItemType = {!! json_encode(\App\Models\ItemType::select('id','name')->get()) !!};
+</script>
 @endsection
 
 @section('content-wrapper')
@@ -15,6 +18,18 @@
     <!-- Content Header (Page header) -->
     <div class="content-header">
         <div class="container-fluid">
+            <div class="row mb-2">
+                <div class="col-sm-6">
+                    <div class="row mb-2">
+                        <div class="col-sm-5">
+                            <div id="toggle-hide-column"></div>
+                        </div>
+                    </div>
+                </div><!-- /.col -->
+                <div class="col-sm-6">
+                    <button type="button" class="btn btn-default float-sm-right" data-toggle="modal" data-target="#modalForm" id="create">Create</button>
+                </div><!-- /.col -->
+            </div><!-- /.row -->
         </div><!-- /.container-fluid -->
     </div>
     <!-- /.content-header -->
@@ -24,21 +39,7 @@
         <div class="container-fluid">
             <div class="auto-scroll">
                 <table id="detailedTable" class="table table-bordered table-hover">
-                    <thead>
-                    <tr>
-                        <th>No</th>
-                        <th>Name</th>
-                        <th>Type</th>
-                        <th>Price</th>
-                        <th>Stock</th>
-                        <th>Discount</th>
-                        <th>Description</th>
-                        <th>Created at</th>
-                        <th>Updated at</th>
-                        <th>Updated by</th>
-                        <th></th>
-                    </tr>
-                    </thead>
+                    <thead></thead>
                 </table>
             </div>
         </div><!-- /.container-fluid -->
@@ -46,4 +47,6 @@
     <!-- /.content -->
 </div>
 <!-- /.content-wrapper -->
+@include('ui.item.form')
+@include('layouts.ui-first.confirm')
 @endsection

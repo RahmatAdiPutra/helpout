@@ -2,13 +2,17 @@
     'use strict';
 
     var baseUrl = $('base').attr('href') + '/api/item-history';
+    var dataUrl = baseUrl + '/data';
+    var form = $('#form');
+    var columnList = [];
 
     var dataTableOptions = {
         ajax: {
-            url: baseUrl + '/data'
+            url: dataUrl
         },
         columns: [
             {
+                name: 'no',
                 orderable: false,
                 'render': function ( data, type, full, meta ) {
                     return  meta.row + 1;
@@ -19,8 +23,20 @@
                 name: 'item.name'
             },
             {
+                data: 'purchase',
+                name: 'purchase'
+            },
+            {
+                data: 'price',
+                name: 'price'
+            },
+            {
                 data: 'quantity',
                 name: 'quantity'
+            },
+            {
+                data: 'discount',
+                name: 'discount'
             },
             {
                 data: 'created_at',
@@ -43,23 +59,37 @@
                     return data ? data : '';
                 }
             },
-            {
-                orderable: false,
-                mRender: function (data, type, row) {
-                    return `
-                        <a href="#" data-id="${row.id}" id="update" data-target="#modalForm" data-toggle="modal">
-                        Update
-                        </a>
-                        <a href="#" data-id="${row.id}" id="delete" data-target="#modalConfirm" data-toggle="modal">
-                        Delete
-                        </a>
-                    `;
-                }
-            },
         ]
     };
+
+    dataTableOptions.columns.forEach(function(item, index) {
+        item.name = item.name.split('.')[0];
+        item.name = item.name.split('_').join(' ');
+        columnList.push(`<th style="font-size:xx-small">${upperCaseFirst(item.name)}</th>`);
+    });
+    $('#detailedTable thead').html('<tr>'+columnList.join(' ')+'</tr>');
+    
 
     var table = $('#detailedTable').DataTable(
         $.extend(true, w.dataTableDefaultOptions, dataTableOptions)
     );
+
+    $('#toggle-hide-column').html(`<input type="number" class="form-control" id="hide-column" min="0" max="${dataTableOptions.columns.length - 1}" size="4" placeholder="Hide column">`);
+    $('#hide-column').on('change', function(event) {
+        event.preventDefault();
+        var val = $(this).val();
+        if (val < dataTableOptions.columns.length) {
+            // Get the column API object
+            var column = table.column(val);
+            // Toggle the visibility
+            column.visible(!column.visible());
+        }
+    });
+
+    function upperCaseFirst(str) {
+        str = str.toLowerCase().replace(/\b[a-z]/g, function(letter) {
+            return letter.toUpperCase();
+        });
+        return str;
+    }
 })(window, window.jQuery);

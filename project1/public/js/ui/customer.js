@@ -4,6 +4,7 @@
     var baseUrl = $('base').attr('href') + '/api/customer';
     var dataUrl = baseUrl + '/data';
     var form = $('#form');
+    var columnList = [];
 
     var dataTableOptions = {
         ajax: {
@@ -11,6 +12,7 @@
         },
         columns: [
             {
+                name: 'no',
                 orderable: false,
                 'render': function ( data, type, full, meta ) {
                     return  meta.row + 1;
@@ -78,6 +80,7 @@
                 }
             },
             {
+                name: 'action',
                 orderable: false,
                 mRender: function (data, type, row) {
                     return `
@@ -89,9 +92,29 @@
         ]
     };
 
+    dataTableOptions.columns.forEach(function(item, index) {
+        item.name = item.name.split('.')[0];
+        item.name = item.name.split('_').join(' ');
+        columnList.push(`<th style="font-size:xx-small">${upperCaseFirst(item.name)}</th>`);
+    });
+    $('#detailedTable thead').html('<tr>'+columnList.join(' ')+'</tr>');
+    
+
     var table = $('#detailedTable').DataTable(
         $.extend(true, w.dataTableDefaultOptions, dataTableOptions)
     );
+
+    $('#toggle-hide-column').html(`<input type="number" class="form-control" id="hide-column" min="0" max="${dataTableOptions.columns.length - 1}" size="4" placeholder="Hide column">`);
+    $('#hide-column').on('change', function(event) {
+        event.preventDefault();
+        var val = $(this).val();
+        if (val < dataTableOptions.columns.length) {
+            // Get the column API object
+            var column = table.column(val);
+            // Toggle the visibility
+            column.visible(!column.visible());
+        }
+    });
 
     $('.container-fluid #create').on('click', createData);
     $('#detailedTable tbody').on('click', '#update', updateData);
@@ -109,8 +132,13 @@
 
     form.on('submit', saveData);
 
+    function auth() {
+        form.find('#updated_by').val(dataAuth.id);
+    }
+
     function createData(event) {
         event.preventDefault();
+        auth();
         selectReligion();
         selectStatus();
         $('#form-header .modal-title').html(upperCaseFirst($(this).attr('id')));
@@ -118,6 +146,7 @@
 
     function updateData(event) {
         event.preventDefault();
+        auth();
         $('#form-header .modal-title').html(upperCaseFirst($(this).attr('id')));
         var id = $(this).attr("data-id");
         $.ajax({
@@ -200,6 +229,7 @@
         form.find('#phone_number').val('');
         form.find('#email').val('');
         form.find('#status').val('');
+        form.find('#updated_by').val('');
     }
 
     function selectReligion(val) {

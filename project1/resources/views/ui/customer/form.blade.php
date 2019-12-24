@@ -11,11 +11,11 @@
             <form role="form" id="form" autocomplete="off">
                 <div class="modal-body" id="form-body">
                     <input type="text" class="form-control" id="id" name="id" hidden>
-                    <input type="text" class="form-control" id="updated_by" name="updated_by" value="1" hidden>
+                    <input type="text" class="form-control" id="updated_by" name="updated_by" hidden>
                     <div class="row">
                         <div class="col-sm-6">
                             <div class="form-group">
-                                <label for="name">ID Card Number</label>
+                                <label for="idCardNumber">ID Card Number</label>
                                 <input type="text" class="form-control" id="id_card_number" name="id_card_number"
                                     placeholder="Enter customer id card number" required>
                             </div>
@@ -29,7 +29,7 @@
                     </div>
                     <div class="row">
                         <div class="col-sm-6">
-                            <label for="name">Gender</label>
+                            <label for="gender">Gender</label>
                             <div class="form-group clearfix">
                                 <div class="icheck-primary d-inline">
                                     <input type="radio" id="Male" name="gender" value="Male" required>
@@ -43,7 +43,7 @@
                         </div>
                         <div class="col-sm-6">
                             <div class="form-group">
-                                <label for="name">Birthday</label>
+                                <label for="birthday">Birthday</label>
                                 <input type="text" class="form-control" id="birthday" name="birthday"
                                     placeholder="Enter customer birthday" required>
                             </div>
@@ -52,13 +52,13 @@
                     <div class="row">
                         <div class="col-sm-6">
                             <div class="form-group">
-                                <label for="name">Religion</label>
+                                <label for="religion">Religion</label>
                                 <select class="form-control" id="religion" name="religion" required></select>
                             </div>
                         </div>
                         <div class="col-sm-6">
                             <div class="form-group">
-                                <label for="name">Status</label>
+                                <label for="status">Status</label>
                                 <select class="form-control" id="status" name="status" required></select>
                             </div>
                         </div>
@@ -66,14 +66,14 @@
                     <div class="row">
                         <div class="col-sm-6">
                             <div class="form-group">
-                                <label for="name">Phone Number</label>
+                                <label for="phoneNumber">Phone Number</label>
                                 <input type="text" class="form-control" id="phone_number" name="phone_number"
                                     placeholder="Enter customer phone number" required>
                             </div>
                         </div>
                         <div class="col-sm-6">
                             <div class="form-group">
-                                <label for="name">Email</label>
+                                <label for="email">Email</label>
                                 <input type="email" class="form-control" id="email" name="email"
                                     placeholder="Enter customer email" required>
                             </div>
@@ -82,13 +82,13 @@
                     <div class="row">
                         <div class="col-sm-6">
                             <div class="form-group">
-                                <label for="name">City</label>
+                                <label for="city">City</label>
                                 <input type="text" class="form-control" id="city" name="city" placeholder="Enter customer city" required>
                             </div>
                         </div>
                         <div class="col-sm-6">
                             <div class="form-group">
-                                <label>Address</label>
+                                <label for="address">Address</label>
                                 <textarea class="form-control" id="address" name="address" rows="3" placeholder="Enter customer address" required></textarea>
                             </div>
                         </div>

@@ -12,10 +12,6 @@
                 <div class="modal-body" id="form-body">
                     <input type="text" class="form-control" id="id" name="id" hidden>
                     <input type="text" class="form-control" id="updated_by" name="updated_by" value="1" hidden>
-                    <div class="form-group">
-                        <label for="name">Position</label>
-                        <select class="form-control" id="position_id" name="position_id" required></select>
-                    </div>
                     <div class="row">
                         <div class="col-sm-6">
                             <div class="form-group">
@@ -30,6 +26,10 @@
                                 <input type="text" class="form-control" id="name" name="name" placeholder="Enter customer name" required>
                             </div>
                         </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="name">Position</label>
+                        <select class="form-control" id="position_id" name="position_id" required></select>
                     </div>
                     <div class="row">
                         <div class="col-sm-6">

@@ -131,7 +131,6 @@
                 form.find('#name').val(response.payloads.name);
                 form.find('#'+upperCaseFirst(response.payloads.gender)).prop('checked', true);
                 form.find('#birthday').val(response.payloads.birthday);
-                // form.find('#religion').val(response.payloads.religion);
                 selectReligion(response.payloads.religion);
                 form.find('#city').val(response.payloads.city);
                 form.find('#address').val(response.payloads.address);
@@ -154,8 +153,6 @@
     function saveData(event) {
         event.preventDefault();
         var formData = form.serializeArray();
-        console.log(formData);
-        return 'a';
         $.ajax({
             method: 'POST',
             dataType: 'json',
@@ -208,7 +205,7 @@
     function selectReligion(val) {
         $('#religion').select2({
             placeholder: "Select a religion",
-            data: ['Islam', 'Kristen', 'Hindu', 'Budha', 'Konghucu']
+            data: dataReligion
         });
         $('#religion').val(val).trigger('change');
     }
@@ -216,7 +213,7 @@
     function selectStatus(val) {
         $('#status').select2({
             placeholder: "Select a status",
-            data: ['Non Member', 'Besic', 'Premium']
+            data: dataStatusCustomer.allow
         });
         $('#status').val(val).trigger('change');
     }

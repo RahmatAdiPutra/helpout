@@ -11,6 +11,11 @@
 |
 */
 
+
+// Auth::loginUsingId(1, true);
+
+// Auth::routes();
+
 Route::get('/', function () {
     return view('ui.dashboard.index');
 });

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 23, 2019 at 05:36 PM
+-- Generation Time: Dec 24, 2019 at 04:34 AM
 -- Server version: 10.4.6-MariaDB
 -- PHP Version: 7.3.9
 
@@ -154,7 +154,8 @@ INSERT INTO `customers` (`id`, `id_card_number`, `name`, `gender`, `birthday`, `
 (97, '59b4c790-d8ce-3216-a3bd-2be17fc770da', 'Dr. Lafayette Nolan DDS', 'male', '1981-06-17', 'Konghucu', 'Port Mikaylaside', '8349 Feeney Extensions Suite 359\nNicolasstad, ID 36423-6543', '849-605-8043 x9859', '9622ooreilly@yahoo.com', NULL, NULL, '106bf962f40c4081f8cfa1c70334e75afca5c0ff3fc547389e61e84bb690b08b', 'Premium', NULL, '3', '2019-12-23 09:29:52', '2019-12-23 09:29:52', NULL),
 (98, '69691d2b-b0ac-3de8-a14f-1c1b8ddc5190', 'Mr. Dalton Torphy Jr.', 'female', '2011-05-28', 'Kristen', 'Lennachester', '788 Santino Summit\nAlycefort, WY 92932-3502', '(484) 678-3989', '121014gwen.johnson@gmail.com', NULL, NULL, '141dc91796b2312911aca14016bf04bf0bcc75eb445404fccc712205ad076943', 'Basic', NULL, '3', '2019-12-23 09:29:52', '2019-12-23 09:29:52', NULL),
 (99, '5a92d373-9670-3ff7-b302-3ed9a28315e8', 'Prof. Jo Zemlak MD', 'male', '1986-10-15', 'Konghucu', 'North Celialand', '809 Ward Bypass\nNew Hipolitohaven, CT 38578', '1-887-644-3143', '1945562aubree.greenholt@hotmail.com', NULL, NULL, '4436c1097e3b04508d151b64c133abbdcf7fb881fce150def9ef10cc7294740b', 'Basic', NULL, '15', '2019-12-23 09:29:52', '2019-12-23 09:29:52', NULL),
-(100, 'f6fb0ef7-6e47-35d9-8234-15781e2da0d1', 'Woodrow Bruen Jr.', 'male', '2016-11-03', 'Budha', 'North Dockberg', '66623 Roger Gardens Suite 811\nPort Alexandriastad, SD 20119-9417', '(586) 697-2406 x9114', '22241916towne.zula@gmail.com', NULL, NULL, '1c9a98aa43d42ac8bf4c93c30176a0793a9163cc100a641680e6b8c5dfc12c01', 'Basic', NULL, '11', '2019-12-23 09:29:52', '2019-12-23 09:29:52', NULL);
+(100, 'f6fb0ef7-6e47-35d9-8234-15781e2da0d1', 'Woodrow Bruen Jr.', 'male', '2016-11-03', 'Budha', 'North Dockberg', '66623 Roger Gardens Suite 811\nPort Alexandriastad, SD 20119-9417', '(586) 697-2406 x9114', '22241916towne.zula@gmail.com', NULL, NULL, '1c9a98aa43d42ac8bf4c93c30176a0793a9163cc100a641680e6b8c5dfc12c01', 'Basic', NULL, '11', '2019-12-23 09:29:52', '2019-12-23 09:29:52', NULL),
+(101, 'fgsgfd', 'sdSDs', 'female', '2019-12-02', 'Islam', 'asda', 'adad', 'hhoijo', 'test@test.com', NULL, NULL, NULL, 'Premium', NULL, '1', '2019-12-23 18:30:34', '2019-12-23 18:31:22', '2019-12-23 18:31:22');
 
 -- --------------------------------------------------------
 
@@ -193,7 +194,7 @@ INSERT INTO `employees` (`id`, `position_id`, `id_card_number`, `name`, `gender`
 (2, 4, 'ac00151c-e763-3a4d-a765-30417f59a92d', 'Tanya Waters', 'Male', '1976-01-14', 'Hindu', 'Port Merritt', '88638 Gordon Court Apt. 950\nJaunitaville, MD 26123-5377', '(264) 365-4594', '3thurman48@gmail.com', NULL, NULL, '30561daa802e6acc8cf36fda294754144a8cef1a9485658d8c650fc4535cc2ba', 0, NULL, '2019-12-23 09:29:39', '2019-12-23 09:29:39', NULL),
 (3, 4, '308fa362-d120-3364-aac9-51ef639b1028', 'Roderick Lynch', 'Female', '1981-01-05', 'Budha', 'Lake Valentinabury', '812 Nolan Squares Apt. 943\nEast Abner, MN 80663', '525-484-9610', '99velma.rogahn@gmail.com', NULL, NULL, 'a9be88213f6010a96581a3e8794527a240a19bd57c4fcbeea97217a3219a5a8f', 1, NULL, '2019-12-23 09:29:39', '2019-12-23 09:29:39', NULL),
 (4, 1, 'a0f8395a-c703-382f-a584-0b80ab957235', 'Olaf Watsica', 'Male', '1992-11-06', 'Kristen', 'Tamaratown', '153 Rhoda Squares\nWest Santinoburgh, RI 32650', '+17804479546', '56reuben.franecki@gmail.com', NULL, NULL, 'c355fbfd713160f58970d458dddc2361926fd74065ffaa46e14f3a70311aa82f', 1, NULL, '2019-12-23 09:29:39', '2019-12-23 09:29:39', NULL),
-(5, 3, 'b554d5a2-7bf8-3e21-a4d1-3b01d6a875d4', 'Clemens Jones', 'Male', '1980-10-04', 'Konghucu', 'Hodkiewiczville', '92747 Klein Plaza\nNicolafurt, PA 36238-3264', '(819) 810-8206', '985583803veum.natasha@yahoo.com', NULL, NULL, 'e4d004cf979d579fd3cad0baf3dfcae2258c253cc2ee9c81c18b40292db5e3f1', 1, NULL, '2019-12-23 09:29:39', '2019-12-23 09:29:39', NULL),
+(5, 3, 'b554d5a2-7bf8-3e21-a4d1-3b01d6a875d4', 'Clemens Jones', 'Male', '1980-10-04', 'Konghucu', 'Hodkiewiczville', '92747 Klein Plaza\r\nNicolafurt, PA 36238-3264', '(819) 810-8206', '985583803veum.natasha@yahoo.com', NULL, NULL, 'e4d004cf979d579fd3cad0baf3dfcae2258c253cc2ee9c81c18b40292db5e3f1', 0, NULL, '2019-12-23 09:29:39', '2019-12-23 20:29:34', NULL),
 (6, 1, '864c74e4-b2a3-3b2d-ac6e-37797f1dbcaf', 'Clemens Connelly', 'Male', '2017-04-15', 'Budha', 'Cyrilport', '83293 Towne Via\nLulashire, NM 79342', '889.509.2954 x336', '9668lblick@gmail.com', NULL, NULL, 'fd317bd8c71dc90dfa16a331269c0c6ebeb02ccf1be19e23cfddeb900b6e6ad1', 0, NULL, '2019-12-23 09:29:39', '2019-12-23 09:29:39', NULL),
 (7, 5, '39b80b89-720a-38e6-8917-006d01d8f2d9', 'Jamar Schroeder', 'Female', '2017-09-24', 'Islam', 'Tremblaymouth', '639 Fahey Plaza Suite 804\nTrantowstad, AZ 95362-3609', '1-354-514-5397 x58105', '316067ervin60@yahoo.com', NULL, NULL, 'b80b77061dfd7aaa11bf33c5dfa279a247d79c06a252c17704b1c98c208aa51f', 1, NULL, '2019-12-23 09:29:39', '2019-12-23 09:29:39', NULL),
 (8, 5, '4c1dbe39-c89d-316e-a52e-41f09795738a', 'Prof. Keeley Mitchell PhD', 'Male', '1976-05-16', 'Hindu', 'New Billieport', '460 Lenny Highway\nLeannaberg, IL 19976-0169', '+1.621.751.3731', '7165lockman.kaitlyn@gmail.com', NULL, NULL, '22e3eabad3348172e8d78c3fdf31afd6e267748e81e81d1b1fc00b80da489682', 1, NULL, '2019-12-23 09:29:39', '2019-12-23 09:29:39', NULL),
@@ -1049,11 +1050,14 @@ CREATE TABLE `payment_methods` (
 --
 
 INSERT INTO `payment_methods` (`id`, `name`, `updated_by`, `created_at`, `updated_at`, `deleted_at`) VALUES
-(1, 'MasterCard', '4', '2019-12-23 09:29:46', '2019-12-23 09:29:46', NULL),
-(2, 'Visa', '11', '2019-12-23 09:29:46', '2019-12-23 09:29:46', NULL),
-(3, 'Visa', '6', '2019-12-23 09:29:46', '2019-12-23 09:29:46', NULL),
-(4, 'MasterCard', '14', '2019-12-23 09:29:46', '2019-12-23 09:29:46', NULL),
-(5, 'Visa', '13', '2019-12-23 09:29:46', '2019-12-23 09:29:46', NULL);
+(1, 'Cash', '1', '2019-12-23 09:29:46', '2019-12-23 18:38:54', NULL),
+(2, 'BRI Credit Card', '1', '2019-12-23 09:29:46', '2019-12-23 18:39:42', NULL),
+(3, 'BCA Debit Card', '1', '2019-12-23 09:29:46', '2019-12-23 18:39:57', NULL),
+(4, 'BRI Debit Card', '1', '2019-12-23 09:29:46', '2019-12-23 18:39:23', NULL),
+(5, 'BCA Credit Card', '1', '2019-12-23 09:29:46', '2019-12-23 18:40:18', NULL),
+(6, 'BNI Debit Card', '1', '2019-12-23 18:41:02', '2019-12-23 18:41:02', NULL),
+(7, 'BNI Credit Card', '1', '2019-12-23 18:41:14', '2019-12-23 18:41:14', NULL),
+(8, 'OVO', '1', '2019-12-23 18:41:34', '2019-12-23 18:41:42', '2019-12-23 18:41:42');
 
 -- --------------------------------------------------------
 
@@ -1234,7 +1238,8 @@ INSERT INTO `settings` (`var`, `value`) VALUES
 ('gender', '[\"Male\",\"Female\"]'),
 ('religion', '[\"Islam\",\"Kristen\",\"Hindu\",\"Budha\",\"Konghucu\"]'),
 ('customer', '{\"status\":[\"Default\",\"Basic\",\"Premium\"],\"allow\":[\"Basic\",\"Premium\"]}'),
-('payment', '{\"status\":[\"Submitted\",\"Completed\",\"Canceled\"],\"allow\":[\"Submitted\",\"Completed\"]}');
+('payment', '{\"status\":[\"Submitted\",\"Completed\",\"Canceled\"],\"allow\":[\"Submitted\",\"Completed\"]}'),
+('employee', '{\"status\":[\"Not Active\",\"Active\"]}');
 
 -- --------------------------------------------------------
 
@@ -1252,6 +1257,13 @@ CREATE TABLE `users` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `users`
+--
+
+INSERT INTO `users` (`id`, `name`, `email`, `email_verified_at`, `password`, `remember_token`, `created_at`, `updated_at`) VALUES
+(1, 'aman', 'aman@gmail.com', NULL, '$2y$10$69f2PU.DiyR189wqDBcDS.s.FdqPKBoHbKC5kn1NuB1DW4NW2XCPa', 'sqNCCnaqiUoPcnbseipoYDa4tz4G71B9iURK34XmaOHgSYhGL43yvEvom0QH', '2019-12-23 17:26:04', '2019-12-23 17:26:04');
 
 --
 -- Indexes for dumped tables
@@ -1388,7 +1400,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `customers`
 --
 ALTER TABLE `customers`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=101;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=102;
 
 --
 -- AUTO_INCREMENT for table `employees`
@@ -1454,7 +1466,7 @@ ALTER TABLE `payments`
 -- AUTO_INCREMENT for table `payment_methods`
 --
 ALTER TABLE `payment_methods`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `permissions`
@@ -1484,7 +1496,7 @@ ALTER TABLE `role_has_permissions`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- Constraints for dumped tables

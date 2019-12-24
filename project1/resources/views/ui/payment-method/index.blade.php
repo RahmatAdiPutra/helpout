@@ -15,6 +15,16 @@
     <!-- Content Header (Page header) -->
     <div class="content-header">
         <div class="container-fluid">
+            <div class="row mb-2">
+                <div class="col-sm-6">
+                    <h1 class="m-0 text-dark"></h1>
+                </div><!-- /.col -->
+                <div class="col-sm-6">
+                    <button type="button" class="btn btn-default float-sm-right" data-toggle="modal" data-target="#modalForm" id="create">
+                        Create
+                    </button>
+                </div><!-- /.col -->
+            </div><!-- /.row -->
         </div><!-- /.container-fluid -->
     </div>
     <!-- /.content-header -->
@@ -41,4 +51,6 @@
     <!-- /.content -->
 </div>
 <!-- /.content-wrapper -->
+@include('ui.payment-method.form')
+@include('layouts.ui-first.confirm')
 @endsection

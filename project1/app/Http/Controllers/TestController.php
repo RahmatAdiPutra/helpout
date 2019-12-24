@@ -99,6 +99,9 @@ class TestController extends Controller
             'Budha',
             'Konghucu'
         ];
+        $employee = [
+            'status' => ['Not Active', 'Active'],
+        ];
         $customer = [
             'status' => ['Default', 'Basic', 'Premium'],
             'allow' => ['Basic', 'Premium']
@@ -111,6 +114,7 @@ class TestController extends Controller
         Setting::set('menuPermission', $menuPermission);
         Setting::set('gender', $gender);
         Setting::set('religion', $religion);
+        Setting::set('employee', $employee);
         Setting::set('customer', $customer);
         Setting::set('payment', $payment);
     }

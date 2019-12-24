@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Api;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Api\CustomerRequest;
 use App\Models\Customer;
+use App\Models\Setting;
 use Illuminate\Http\Request;
 
 class CustomerController extends Controller
@@ -13,7 +14,7 @@ class CustomerController extends Controller
     {
         $start = $request->get('start', 0);
         $limit = $request->get('length', 10);
-        $query = Customer::select('*')->with('updatedBy', 'orders')->where('status', '!=' , 'Non Member');
+        $query = Customer::select('*')->with('updatedBy', 'orders')->whereIn('status', Setting::get('customer')['allow']);
 
         // build order
         $order = $request->get('order');

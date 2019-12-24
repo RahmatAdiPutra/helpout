@@ -7,6 +7,11 @@
 
 @section('jsSection')
 <script src="{{ asset('js/ui/employee.js') }}"></script>
+<script>
+    window.dataPosition = {!! json_encode(\App\Models\Position::select('id','name')->get()) !!};
+    window.dataReligion = {!! json_encode(\App\Models\Setting::get('religion')) !!};
+    window.dataEmployee = {!! json_encode(\App\Models\Setting::get('employee')) !!};
+</script>
 @endsection
 
 @section('content-wrapper')
@@ -15,6 +20,16 @@
     <!-- Content Header (Page header) -->
     <div class="content-header">
         <div class="container-fluid">
+            <div class="row mb-2">
+                <div class="col-sm-6">
+                    <h1 class="m-0 text-dark"></h1>
+                </div><!-- /.col -->
+                <div class="col-sm-6">
+                    <button type="button" class="btn btn-default float-sm-right" data-toggle="modal" data-target="#modalForm" id="create">
+                        Create
+                    </button>
+                </div><!-- /.col -->
+            </div><!-- /.row -->
         </div><!-- /.container-fluid -->
     </div>
     <!-- /.content-header -->
@@ -50,4 +65,6 @@
     <!-- /.content -->
 </div>
 <!-- /.content-wrapper -->
+@include('ui.employee.form')
+@include('layouts.ui-first.confirm')
 @endsection

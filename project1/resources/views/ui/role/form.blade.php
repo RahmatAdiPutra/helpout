@@ -14,7 +14,7 @@
                     <input type="text" class="form-control" id="updated_by" name="updated_by" value="1" hidden>
                     <div class="form-group">
                         <label for="name">Name</label>
-                        <input type="text" class="form-control" id="name" name="name" placeholder="Enter role name">
+                        <input type="text" class="form-control" id="name" name="name" placeholder="Enter role name" required>
                     </div>
                 </div>
                 <div class="modal-footer" id="form-footer">

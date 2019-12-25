@@ -54,8 +54,8 @@
                     <div class="row">
                         <div class="col-sm-6">
                             <div class="form-group">
-                                <label for="currentQuantity">Current Quantity</label>
-                                <input type="number" class="form-control" id="current_quantity" min="0" name="current_quantity"  disabled>
+                                <label for="currentStock">Current Stock</label>
+                                <input type="number" class="form-control" id="current_stock" min="0" name="current_stock"  disabled>
                             </div>
                         </div>
                         <div class="col-sm-6">

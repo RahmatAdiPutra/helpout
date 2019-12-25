@@ -101,8 +101,8 @@
         $.extend(true, w.dataTableDefaultOptions, dataTableOptions)
     );
 
-    $("div.toolbar-hide").html(`<input type="number" class="form-control form-control-sm" id="hide-column" style="font-size:xx-small" min="0" max="${dataTableOptions.columns.length - 1}" size="4" placeholder="Hide column">`);
-    $("div.toolbar-create").html('<button type="button" class="btn btn-default btn-sm" data-toggle="modal" data-target="#modalForm" id="create">Create</button>');
+    $('div.toolbar-hide').html(`<input type="number" class="form-control form-control-sm" id="hide-column" style="font-size:xx-small" min="0" max="${dataTableOptions.columns.length - 1}" size="4" placeholder="Hide column">`);
+    $('div.toolbar-create').html('<button type="button" class="btn btn-default btn-sm" data-toggle="modal" data-target="#modalForm" id="create">Create</button>');
     
     $(toolbar + ' .toolbar-hide').on('change', '#hide-column', hideColumn);
     $(toolbar + ' .toolbar-create').on('click', '#create', createData);
@@ -130,9 +130,9 @@
         $('#form-header .modal-title').html(upperCaseFirst($(this).attr('id')));
         var id = $(this).attr("data-id");
         $.ajax({
-            method: "GET",
-            dataType: "json",
-            url: baseUrl + "/" + id,
+            method: 'GET',
+            dataType: 'json',
+            url: baseUrl + '/' + id,
             success: function (response) {
                 $('#modalForm').modal('show');
                 form.find('#id').val(response.payloads.id);

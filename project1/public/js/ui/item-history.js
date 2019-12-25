@@ -93,8 +93,8 @@
         $.extend(true, w.dataTableDefaultOptions, dataTableOptions)
     );
 
-    $("div.toolbar-hide").html(`<input type="number" class="form-control form-control-sm" id="hide-column" style="font-size:xx-small" min="0" max="${dataTableOptions.columns.length - 1}" size="4" placeholder="Hide column">`);
-    $("div.toolbar-create").html('<button type="button" class="btn btn-default btn-sm" data-toggle="modal" data-target="#modalForm" id="create">Create</button>');
+    $('div.toolbar-hide').html(`<input type="number" class="form-control form-control-sm" id="hide-column" style="font-size:xx-small" min="0" max="${dataTableOptions.columns.length - 1}" size="4" placeholder="Hide column">`);
+    $('div.toolbar-create').html('<button type="button" class="btn btn-default btn-sm" data-toggle="modal" data-target="#modalForm" id="create">Create</button>');
     
     $(toolbar + ' .toolbar-hide').on('change', '#hide-column', hideColumn);
     $(toolbar + ' .toolbar-create').on('click', '#create', createData);
@@ -109,17 +109,41 @@
 
     $('input').on('input', function (event) {
         event.preventDefault();
-        if ($(this).attr('name') == 'discount') {
-            $(this).val(Math.max(Math.min($(this).val(), 100), 0));
+        var name = $(this).attr('name');
+        var value = $(this).val();
+        if (name == 'discount') {
+            $(this).val(Math.max(Math.min(value, 100), 0));
         }
         if ($(this).attr('name') == 'quantity') {
-            var current_quantity = form.find('#current_quantity').val();
-            if (current_quantity == 0) {
-                $(this).val(Math.max(Math.min($(this).val(), 100), 0));
+            var isDisabled = $('#item_id').prop('disabled');
+            var current_stock = form.find('#current_stock').val();
+            if (isDisabled) {
+                if (current_stock == 0) {
+                    $(this).val(Math.max(Math.min(value, 100), 0));
+                } else {
+                    $(this).val(Math.max(Math.min(value, 100), -current_stock));
+                }
             } else {
-                $(this).val(Math.max(Math.min($(this).val(), 100), -current_quantity));
+                $(this).val(Math.max(Math.min(value, 100), 0));
             }
         }
+    });
+
+    $('#item_id').on('select2:select', function (event) {
+        event.preventDefault();
+        var id = $(this).val();
+        $.ajax({
+            method: 'GET',
+            dataType: 'json',
+            url: $('base').attr('href') + '/api/item' + '/' + id,
+            success: function (response) {
+                form.find('#purchase').val(response.payloads.purchase);
+                form.find('#price').val(response.payloads.price);
+                form.find('#current_stock').val(response.payloads.stock);
+                form.find('#discount').val(response.payloads.discount * 100);
+            },
+            error: function (response) {}
+        });
     });
 
     form.on('submit', saveData);
@@ -129,7 +153,7 @@
         auth();
         $('#item_id').prop('disabled', false);
         selectItem();
-        form.find('#current_quantity').val(0);
+        form.find('#current_stock').val(0);
         form.find('#quantity').val(0);
         form.find('#discount').val(0);
         $('#form-header .modal-title').html(upperCaseFirst($(this).attr('id')));
@@ -142,16 +166,16 @@
         $('#form-header .modal-title').html(upperCaseFirst($(this).attr('id')));
         var id = $(this).attr("data-id");
         $.ajax({
-            method: "GET",
-            dataType: "json",
-            url: baseUrl + "/" + id,
+            method: 'GET',
+            dataType: 'json',
+            url: baseUrl + '/' + id,
             success: function (response) {
                 $('#modalForm').modal('show');
                 form.find('#id').val(response.payloads.id);
                 selectItem(response.payloads.item.id);
                 form.find('#purchase').val(response.payloads.purchase);
                 form.find('#price').val(response.payloads.price);
-                form.find('#current_quantity').val(response.payloads.quantity);
+                form.find('#current_stock').val(response.payloads.item.stock);
                 form.find('#quantity').val(0);
                 form.find('#discount').val(response.payloads.discount * 100);
             },
@@ -225,7 +249,7 @@
         form.find('#item_id').val('');
         form.find('#purchase').val('');
         form.find('#price').val('');
-        form.find('#current_quantity').val('');
+        form.find('#current_stock').val('');
         form.find('#quantity').val('');
         form.find('#discount').val('');
         form.find('#updated_by').val('');

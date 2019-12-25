@@ -16,13 +16,13 @@
                             <div class="form-group">
                                 <label for="idCardNumber">ID Card Number</label>
                                 <input type="text" class="form-control" id="id_card_number" name="id_card_number"
-                                    placeholder="Enter customer id card number" required>
+                                    placeholder="Enter employee id card number" required>
                             </div>
                         </div>
                         <div class="col-sm-6">
                             <div class="form-group">
                                 <label for="name">Name</label>
-                                <input type="text" class="form-control" id="name" name="name" placeholder="Enter customer name" required>
+                                <input type="text" class="form-control" id="name" name="name" placeholder="Enter employee name" required>
                             </div>
                         </div>
                     </div>
@@ -48,7 +48,7 @@
                             <div class="form-group">
                                 <label for="birthday">Birthday</label>
                                 <input type="text" class="form-control" id="birthday" name="birthday"
-                                    placeholder="Enter customer birthday" required>
+                                    placeholder="Enter employee birthday" required>
                             </div>
                         </div>
                     </div>
@@ -71,14 +71,14 @@
                             <div class="form-group">
                                 <label for="phoneNumber">Phone Number</label>
                                 <input type="text" class="form-control" id="phone_number" name="phone_number"
-                                    placeholder="Enter customer phone number" required>
+                                    placeholder="Enter employee phone number" required>
                             </div>
                         </div>
                         <div class="col-sm-6">
                             <div class="form-group">
                                 <label for="email">Email</label>
                                 <input type="email" class="form-control" id="email" name="email"
-                                    placeholder="Enter customer email" required>
+                                    placeholder="Enter employee email" required>
                             </div>
                         </div>
                     </div>
@@ -86,13 +86,13 @@
                         <div class="col-sm-6">
                             <div class="form-group">
                                 <label for="city">City</label>
-                                <input type="text" class="form-control" id="city" name="city" placeholder="Enter customer city" required>
+                                <input type="text" class="form-control" id="city" name="city" placeholder="Enter employee city" required>
                             </div>
                         </div>
                         <div class="col-sm-6">
                             <div class="form-group">
                                 <label for="address">Address</label>
-                                <textarea class="form-control" id="address" name="address" rows="3" placeholder="Enter customer address" required></textarea>
+                                <textarea class="form-control" id="address" name="address" rows="3" placeholder="Enter employee address" required></textarea>
                             </div>
                         </div>
                     </div>

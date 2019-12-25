@@ -3,11 +3,6 @@
 @push('appTitle', 'Item')
 
 @section('cssSection')
-<style>
-    .toolbar {
-        float:left;
-    }
-</style>
 @endsection
 
 @section('jsSection')

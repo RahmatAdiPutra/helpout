@@ -39,13 +39,28 @@ class ItemHistoryRequest extends FormRequest
     {
         if ($id) {
             $itemHistory = ItemHistory::find($id);
+            $current_quantity = $itemHistory->quantity;
         } else {
             $itemHistory = new ItemHistory();
+            $current_quantity = 0;
         }
         
         foreach ($post as $field => $value) {
-            $itemHistory->$field = $value;
+            if ($field == 'quantity') {
+                $new_quantity = $value;
+                $itemHistory->$field = $new_quantity + $current_quantity;
+            } else {
+                $itemHistory->$field = $value;
+            }
         }
-        $itemHistory->save();        
+        $itemHistory->save();
+
+        $item = Item::find($itemHistory->item_id);
+        $item->purchase = $itemHistory->purchase;
+        $item->price = $itemHistory->price;
+        $item->stock = $new_quantity + $item->stock;
+        $item->discount = $itemHistory->discount;
+        $item->updated_by = $itemHistory->updated_by;
+        $item->save();
     }
 }

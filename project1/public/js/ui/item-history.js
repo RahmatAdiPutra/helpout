@@ -69,6 +69,16 @@
                     return data ? data : '';
                 }
             },
+            {
+                name: 'action',
+                orderable: false,
+                mRender: function (data, type, row) {
+                    return `
+                        <div data-id="${row.id}" id="update"><i class="nav-icon far fa-edit"></i></div>
+                        <div data-id="${row.id}" id="delete"><i class="nav-icon far fa-trash"></i></div>
+                    `;
+                }
+            },
         ]
     };
 
@@ -84,7 +94,160 @@
     );
 
     $("div.toolbar-hide").html(`<input type="number" class="form-control form-control-sm" id="hide-column" style="font-size:xx-small" min="0" max="${dataTableOptions.columns.length - 1}" size="4" placeholder="Hide column">`);
+    $("div.toolbar-create").html('<button type="button" class="btn btn-default btn-sm" data-toggle="modal" data-target="#modalForm" id="create">Create</button>');
+    
     $(toolbar + ' .toolbar-hide').on('change', '#hide-column', hideColumn);
+    $(toolbar + ' .toolbar-create').on('click', '#create', createData);
+    $('#detailedTable tbody').on('click', '#update', updateData);
+    $('#detailedTable tbody').on('click', '#delete', dalateData);
+    $('#confirm-footer button').on('click', confirm);
+    $('#modalForm').on('hidden.bs.modal', clearForm);
+
+    form.find('#purchase').number(true, 2);
+    form.find('#price').number(true, 2);
+    form.find('#discount').number(true, 2);
+
+    $('input').on('input', function (event) {
+        event.preventDefault();
+        if ($(this).attr('name') == 'discount') {
+            $(this).val(Math.max(Math.min($(this).val(), 100), 0));
+        }
+        if ($(this).attr('name') == 'quantity') {
+            var current_quantity = form.find('#current_quantity').val();
+            if (current_quantity == 0) {
+                $(this).val(Math.max(Math.min($(this).val(), 100), 0));
+            } else {
+                $(this).val(Math.max(Math.min($(this).val(), 100), -current_quantity));
+            }
+        }
+    });
+
+    form.on('submit', saveData);
+
+    function createData(event) {
+        event.preventDefault();
+        auth();
+        $('#item_id').prop('disabled', false);
+        selectItem();
+        form.find('#current_quantity').val(0);
+        form.find('#quantity').val(0);
+        form.find('#discount').val(0);
+        $('#form-header .modal-title').html(upperCaseFirst($(this).attr('id')));
+    }
+
+    function updateData(event) {
+        event.preventDefault();
+        auth();
+        $('#item_id').prop('disabled', 'disabled');
+        $('#form-header .modal-title').html(upperCaseFirst($(this).attr('id')));
+        var id = $(this).attr("data-id");
+        $.ajax({
+            method: "GET",
+            dataType: "json",
+            url: baseUrl + "/" + id,
+            success: function (response) {
+                $('#modalForm').modal('show');
+                form.find('#id').val(response.payloads.id);
+                selectItem(response.payloads.item.id);
+                form.find('#purchase').val(response.payloads.purchase);
+                form.find('#price').val(response.payloads.price);
+                form.find('#current_quantity').val(response.payloads.quantity);
+                form.find('#quantity').val(0);
+                form.find('#discount').val(response.payloads.discount * 100);
+            },
+            error: function (response) {}
+        });
+    }
+
+    function dalateData(event) {
+        event.preventDefault();
+        $('#confirm-header .modal-title').html(upperCaseFirst($(this).attr('id')));
+        $('#confirm-body').html('Are you sure want to delete ?');
+        $('#modalConfirm').attr('data-id', $(this).attr('data-id'));
+        $('#modalConfirm').modal('show');
+    }
+
+    function saveData(event) {
+        event.preventDefault();
+        var formData = form.serializeArray();
+        var isDisabled = $('#item_id').prop('disabled');
+        if (isDisabled) {
+            formData[4] = {
+                name: 'discount',
+                value: (formData[4].value / 100)
+            };
+            formData[6] = {
+                name: 'item_id',
+                value: form.find('#item_id').val()
+            };
+        } else {
+            formData[5] = {
+                name: 'discount',
+                value: (formData[5].value / 100)
+            };
+        }
+        $.ajax({
+            method: 'POST',
+            dataType: 'json',
+            url: baseUrl,
+            data: formData,
+            success: function (response) {
+                $('#modalForm').modal('hide');
+                table.ajax.url(dataUrl).load();
+                toastr.success(response.payloads.message);
+            },
+            error: function (response) {}
+        });
+    }
+
+    function confirm(event) {
+        event.preventDefault();
+        var id = $('#modalConfirm').attr('data-id');
+        if ($(this).text() == 'Yes') {
+            $.ajax({
+                method: 'DELETE',
+                dataType: 'json',
+                url: baseUrl + '/' + id,
+                success: function (response) {
+                    $('#modalConfirm').attr('data-id', 'id');
+                    $('#modalConfirm').modal('hide');
+                    table.ajax.url(dataUrl).load();
+                    toastr.success(response.payloads.message);
+                },
+                error: function (response) {}
+            });
+        }
+    }
+
+    function clearForm(event) {
+        event.preventDefault();
+        form.find('#id').val('');
+        form.find('#item_id').val('');
+        form.find('#purchase').val('');
+        form.find('#price').val('');
+        form.find('#current_quantity').val('');
+        form.find('#quantity').val('');
+        form.find('#discount').val('');
+        form.find('#updated_by').val('');
+    }
+
+    function selectItem(val) {
+        var item = dataItem.map(function(data, i) {
+            return {
+                id : data.id,
+                text : data.name
+            }
+        });
+        $('#item_id').select2({
+            placeholder: "Select a item",
+            data: item
+        });
+        $('#item_id').val(val).trigger('change');
+    }
+    
+    function auth() {
+        form.find('#updated_by').val(dataAuth.id);
+    }
 
     function hideColumn(event) {
         event.preventDefault();
@@ -96,7 +259,7 @@
             column.visible(!column.visible());
         }
     }
-    
+
     function upperCaseFirst(str) {
         str = str.toLowerCase().replace(/\b[a-z]/g, function(letter) {
             return letter.toUpperCase();

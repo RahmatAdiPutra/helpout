@@ -28,11 +28,17 @@
             },
             {
                 data: 'purchase',
-                name: 'purchase'
+                name: 'purchase',
+                render: function (data, type, row) {
+                    return 'Rp ' + $.number(data, 2);
+                }
             },
             {
                 data: 'price',
-                name: 'price'
+                name: 'price',
+                render: function (data, type, row) {
+                    return 'Rp ' + $.number(data, 2);
+                }
             },
             {
                 data: 'stock',
@@ -40,7 +46,10 @@
             },
             {
                 data: 'discount',
-                name: 'discount'
+                name: 'discount',
+                render: function (data, type, row) {
+                    return (data == 0.00) ? '' : $.number((data * 100), 0) + '%';
+                }
             },
             {
                 data: 'description',
@@ -114,7 +123,16 @@
         clearForm();
     });
 
+    $('input').on('input', function () {
+        if ($(this).attr('name') == 'discount') {
+            $(this).val(Math.max(Math.min($(this).val(), 100), 0));
+        }
+    });
+
     form.on('submit', saveData);
+    form.find('#purchase').number(true, 2);
+    form.find('#price').number(true, 2);
+    form.find('#discount').number(true, 2);
 
     function auth() {
         form.find('#updated_by').val(dataAuth.id);
@@ -126,6 +144,7 @@
         selectItemType();
         form.find('#current_stock').val(0);
         form.find('#stock').val(0);
+        form.find('#discount').val(0);
         $('#form-header .modal-title').html(upperCaseFirst($(this).attr('id')));
     }
 
@@ -164,8 +183,11 @@
 
     function saveData(event) {
         event.preventDefault();
-        form.find('#discount').val(form.find('#discount').val() / 100);
         var formData = form.serializeArray();
+        formData[7] = {
+            name: 'discount',
+            value: (formData[7].value / 100)
+        };
         $.ajax({
             method: 'POST',
             dataType: 'json',

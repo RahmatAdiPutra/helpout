@@ -24,7 +24,6 @@
                     </div>
                 </div><!-- /.col -->
                 <div class="col-sm-6">
-                    <button type="button" class="btn btn-default float-sm-right" data-toggle="modal" data-target="#modalForm" id="create">Create</button>
                 </div><!-- /.col -->
             </div><!-- /.row -->
         </div><!-- /.container-fluid -->

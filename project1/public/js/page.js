@@ -23,6 +23,7 @@
         processing: false,
         serverSide: true,
         stateSave: true,
+        responsive: true,
         searchDelay: 1000,
         pageLength: 10,
         // dom: '<"d-flex align-items-center"<"toolbar flex-grow-1">f>t<"d-flex align-items-center pt-3"l<"border-left pl-2 ml-2 flex-grow-1"i>p>r',

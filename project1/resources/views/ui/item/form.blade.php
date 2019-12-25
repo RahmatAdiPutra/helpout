@@ -34,7 +34,7 @@
                                     <div class="input-group-prepend">
                                         <span class="input-group-text">Rp</span>
                                     </div>
-                                    <input type="number" class="form-control" id="purchase" name="purchase" placeholder="Enter item purchase price" required>
+                                    <input type="text" class="form-control" id="purchase" name="purchase" placeholder="Enter item purchase price" required>
                                 </div>
                             </div>
                         </div>
@@ -45,7 +45,7 @@
                                     <div class="input-group-prepend">
                                         <span class="input-group-text">Rp</span>
                                     </div>
-                                    <input type="number" class="form-control" id="price" name="price" placeholder="Enter item selling price" required>
+                                    <input type="text" class="form-control" id="price" name="price" placeholder="Enter item selling price" required>
                                 </div>
                             </div>
                         </div>
@@ -56,13 +56,13 @@
                                 <div class="col-sm-6">
                                     <div class="form-group">
                                         <label for="currentStock">Current Stock</label>
-                                        <input type="number" class="form-control" id="current_stock" name="current_stock"  disabled>
+                                        <input type="number" class="form-control" id="current_stock" min="0" name="current_stock"  disabled>
                                     </div>
                                 </div>
                                 <div class="col-sm-6">
                                     <div class="form-group">
                                         <label for="stock">Add Stock</label>
-                                        <input type="number" class="form-control" id="stock" name="stock" placeholder="Enter item stock" required>
+                                        <input type="number" class="form-control" id="stock" name="stock" min="0" placeholder="Enter item stock" required>
                                     </div>
                                 </div>
                             </div>
@@ -71,7 +71,7 @@
                             <div class="form-group">
                                 <label for="discount">Discount</label>
                                 <div class="input-group">
-                                    <input type="number" class="form-control" id="discount" name="discount" placeholder="Enter item discount" required>
+                                    <input type="text" class="form-control" id="discount" name="discount" placeholder="Enter item discount" required>
                                     <div class="input-group-prepend">
                                         <span class="input-group-text">%</span>
                                     </div>

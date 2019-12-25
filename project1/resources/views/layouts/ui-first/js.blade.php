@@ -46,6 +46,8 @@
 <script src="{{ asset('adminlte3/plugins/bootstrap-colorpicker/js/bootstrap-colorpicker.min.js') }}"></script>
 <!-- Bootstrap Switch -->
 <script src="{{ asset('adminlte3/plugins/bootstrap-switch/js/bootstrap-switch.min.js') }}"></script>
+<!-- jQuery number -->
+<script src="{{ asset('adminlte3/plugins/jquery-number/jquery.number.js') }}"></script>
 <!-- Page -->
 <script src="{{ asset('js/page.js') }}"></script>
 

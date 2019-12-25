@@ -24,11 +24,17 @@
             },
             {
                 data: 'purchase',
-                name: 'purchase'
+                name: 'purchase',
+                render: function (data, type, row) {
+                    return 'Rp ' + $.number(data, 2);
+                }
             },
             {
                 data: 'price',
-                name: 'price'
+                name: 'price',
+                render: function (data, type, row) {
+                    return 'Rp ' + $.number(data, 2);
+                }
             },
             {
                 data: 'quantity',
@@ -36,7 +42,10 @@
             },
             {
                 data: 'discount',
-                name: 'discount'
+                name: 'discount',
+                render: function (data, type, row) {
+                    return (data == 0.00) ? '' : $.number((data * 100), 0) + '%';
+                }
             },
             {
                 data: 'created_at',

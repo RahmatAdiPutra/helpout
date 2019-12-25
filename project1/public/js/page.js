@@ -26,7 +26,36 @@
         responsive: true,
         searchDelay: 1000,
         pageLength: 10,
-        // dom: '<"d-flex align-items-center"<"toolbar flex-grow-1">f>t<"d-flex align-items-center pt-3"l<"border-left pl-2 ml-2 flex-grow-1"i>p>r',
+        language: {
+            lengthMenu: "Show _MENU_"
+        },
+        dom: `
+            <"row"
+                <"col-sm-12 col-md-6"
+                    <"row"
+                        <"col-sm-12 col-md-4"l>
+                        <"col-sm-12 col-md-4"<"toolbar-hide">>
+                        <"col-sm-12 col-md-4"<"toolbar-create">>
+                    >
+                >
+                <"col-sm-12 col-md-6"
+                    <f>
+                >
+            >
+            <"row"
+                <"col-sm-12"
+                    <rt>
+                >
+            >
+            <"row"
+                <"col-sm-12 col-md-5"
+                    <i>
+                >
+                <"col-sm-12 col-md-7"
+                    <p>
+                >
+            >
+        `,
         ajax: {
             data: function (d) {
                 // buang columns, tidak dipakai di server

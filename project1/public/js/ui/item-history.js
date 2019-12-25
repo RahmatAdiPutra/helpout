@@ -5,6 +5,7 @@
     var dataUrl = baseUrl + '/data';
     var form = $('#form');
     var columnList = [];
+    var toolbar = '#detailedTable_wrapper .row .col-sm-12 .row .col-sm-12';
 
     var dataTableOptions = {
         ajax: {
@@ -78,13 +79,14 @@
     });
     $('#detailedTable thead').html('<tr>'+columnList.join(' ')+'</tr>');
     
-
     var table = $('#detailedTable').DataTable(
         $.extend(true, w.dataTableDefaultOptions, dataTableOptions)
     );
 
-    $('#toggle-hide-column').html(`<input type="number" class="form-control" id="hide-column" min="0" max="${dataTableOptions.columns.length - 1}" size="4" placeholder="Hide column">`);
-    $('#hide-column').on('change', function(event) {
+    $("div.toolbar-hide").html(`<input type="number" class="form-control form-control-sm" id="hide-column" style="font-size:xx-small" min="0" max="${dataTableOptions.columns.length - 1}" size="4" placeholder="Hide column">`);
+    $(toolbar + ' .toolbar-hide').on('change', '#hide-column', hideColumn);
+
+    function hideColumn(event) {
         event.preventDefault();
         var val = $(this).val();
         if (val < dataTableOptions.columns.length) {
@@ -93,8 +95,8 @@
             // Toggle the visibility
             column.visible(!column.visible());
         }
-    });
-
+    }
+    
     function upperCaseFirst(str) {
         str = str.toLowerCase().replace(/\b[a-z]/g, function(letter) {
             return letter.toUpperCase();

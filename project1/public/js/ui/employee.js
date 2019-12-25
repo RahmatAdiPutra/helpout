@@ -5,6 +5,7 @@
     var dataUrl = baseUrl + '/data';
     var form = $('#form');
     var columnList = [];
+    var toolbar = '#detailedTable_wrapper .row .col-sm-12 .row .col-sm-12';
 
     var dataTableOptions = {
         ajax: {
@@ -96,32 +97,19 @@
     });
     $('#detailedTable thead').html('<tr>'+columnList.join(' ')+'</tr>');
     
-
     var table = $('#detailedTable').DataTable(
         $.extend(true, w.dataTableDefaultOptions, dataTableOptions)
     );
 
-    $('#toggle-hide-column').html(`<input type="number" class="form-control" id="hide-column" min="0" max="${dataTableOptions.columns.length - 1}" size="4" placeholder="Hide column">`);
-    $('#hide-column').on('change', function(event) {
-        event.preventDefault();
-        var val = $(this).val();
-        if (val < dataTableOptions.columns.length) {
-            // Get the column API object
-            var column = table.column(val);
-            // Toggle the visibility
-            column.visible(!column.visible());
-        }
-    });
-
-    $('.container-fluid #create').on('click', createData);
+    $("div.toolbar-hide").html(`<input type="number" class="form-control form-control-sm" id="hide-column" style="font-size:xx-small" min="0" max="${dataTableOptions.columns.length - 1}" size="4" placeholder="Hide column">`);
+    $("div.toolbar-create").html('<button type="button" class="btn btn-default btn-sm" data-toggle="modal" data-target="#modalForm" id="create">Create</button>');
+    
+    $(toolbar + ' .toolbar-hide').on('change', '#hide-column', hideColumn);
+    $(toolbar + ' .toolbar-create').on('click', '#create', createData);
     $('#detailedTable tbody').on('click', '#update', updateData);
     $('#detailedTable tbody').on('click', '#delete', dalateData);
     $('#confirm-footer button').on('click', confirm);
-
-    $('#modalForm').on('hidden.bs.modal', function (event) {
-        event.preventDefault();
-        clearForm();
-    });
+    $('#modalForm').on('hidden.bs.modal', clearForm);
 
     $('#birthday').datepicker({
         format: 'yyyy-mm-dd'
@@ -183,7 +171,6 @@
             success: function (response) {
                 $('#modalForm').modal('hide');
                 table.ajax.url(dataUrl).load();
-                clearForm();
                 toastr.success(response.payloads.message);
             },
             error: function (response) {}
@@ -209,7 +196,8 @@
         }
     }
 
-    function clearForm() {
+    function clearForm(event) {
+        event.preventDefault();
         form.find('#id').val('');
         form.find('#id_card_number').val('');
         form.find('#name').val('');
@@ -259,6 +247,17 @@
             data: status
         });
         $('#status').val(val).trigger('change');
+    }
+
+    function hideColumn(event) {
+        event.preventDefault();
+        var val = $(this).val();
+        if (val < dataTableOptions.columns.length) {
+            // Get the column API object
+            var column = table.column(val);
+            // Toggle the visibility
+            column.visible(!column.visible());
+        }
     }
 
     function upperCaseFirst(str) {

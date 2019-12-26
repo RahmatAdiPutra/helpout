@@ -83,7 +83,7 @@
                 mRender: function (data, type, row) {
                     return `
                         <div data-id="${row.id}" id="update"><i class="nav-icon far fa-edit"></i></div>
-                        <div data-id="${row.id}" id="delete"><i class="nav-icon far fa-trash"></i></div>
+                        <div data-id="${row.id}" id="delete"><i class="nav-icon far fa-trash-alt"></i></div>
                     `;
                 }
             },

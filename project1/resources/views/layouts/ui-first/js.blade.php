@@ -50,6 +50,7 @@
 <script src="{{ asset('adminlte3/plugins/jquery-number/jquery.number.js') }}"></script>
 <!-- Page -->
 <script src="{{ asset('js/page.js') }}"></script>
+<script src="{{ asset('js/msi.js') }}"></script>
 
 @yield('jsSection')
 <script>

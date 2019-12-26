@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Api\OrderRequest;
+use App\Models\Customer;
 use App\Models\Order;
 use Illuminate\Http\Request;
 
@@ -32,7 +33,8 @@ class OrderController extends Controller
         $searchTerm = $request->get('search');
         if (empty($searchTerm['value']) === false) {
             $q = '%' . str_replace(' ', '%', trim($searchTerm['value'])) . '%';
-            $query->where('customer_id', 'like', $q);
+            $q = Customer::select('id')->where('name', 'like', $q)->pluck('id');
+            $query->whereIn('customer_id', $q);
         }
 
         // for get data total and last page,

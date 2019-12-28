@@ -108,7 +108,11 @@ class TestController extends Controller
         ];
         $payment = [
             'status' => ['Submitted', 'Completed', 'Canceled'],
-            'allow' => ['Submitted', 'Completed']
+            'allow' => ['Submitted', 'Completed'],
+            'default' => [
+                'method' => 'Cash',
+                'status' => 'Submitted',
+            ]
         ];
 
         Setting::set('menuPermission', $menuPermission);
@@ -374,7 +378,9 @@ class TestController extends Controller
                 if ($item->stock) {    
                     $quantity = $faker->numberBetween(1, $item->stock);
                     if (number_format($item->discount)) {
-                        $amount = $item->price * $quantity * $item->discount;
+                        $discount = $item->price * $quantity * $item->discount;
+                        $amount = $item->price * $quantity;
+                        $amount = $amount - $discount;
                     } else {
                         $amount = $item->price * $quantity;
                     }

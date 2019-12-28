@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\Api\OrderRequest;
 use App\Models\Customer;
 use App\Models\Order;
+use App\Models\Payment;
 use Illuminate\Http\Request;
 
 class OrderController extends Controller
@@ -33,8 +34,13 @@ class OrderController extends Controller
         $searchTerm = $request->get('search');
         if (empty($searchTerm['value']) === false) {
             $q = '%' . str_replace(' ', '%', trim($searchTerm['value'])) . '%';
-            $q = Customer::select('id')->where('name', 'like', $q)->pluck('id');
-            $query->whereIn('customer_id', $q);
+            $q1 = Customer::select('id')->where('name', 'like', $q)->pluck('id');
+            $query->whereIn('customer_id', $q1);
+            if ($query->get()->isEmpty()) {
+                $q2 = Payment::select('order_id')->where('status', 'like', $q)->pluck('order_id');
+                $query = Order::select('*')->with('updatedBy', 'customer', 'items', 'payment');
+                $query->whereIn('id', $q2);
+            }
         }
 
         // for get data total and last page,
@@ -78,7 +84,10 @@ class OrderController extends Controller
                 $message = 'Order has been created';
             }
 
-            $request->save($request->only(array_keys($request->rules())), $request->id);
+            $check = $request->save($request->only(array_keys($request->rules())), $request->id);
+            if ($check['error']) {
+                $message = $check['message'];
+            }
 
             return $this->responseSuccess(['message' => $message]);
         } catch (\Exception $e) {

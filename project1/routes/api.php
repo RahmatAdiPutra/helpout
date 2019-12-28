@@ -22,6 +22,12 @@ Route::group([
     'namespace' => 'Api'
 ],function () {
     Route::group([
+        'prefix' => 'setting'
+    ],function () {
+        Route::get('/data/{setting}', 'SettingController@data');
+    });
+
+    Route::group([
         'prefix' => 'customer'
     ],function () {
         Route::get('/data', 'CustomerController@data');

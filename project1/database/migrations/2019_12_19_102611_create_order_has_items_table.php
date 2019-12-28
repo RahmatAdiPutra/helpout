@@ -14,7 +14,6 @@ class CreateOrderHasItemsTable extends Migration
     public function up()
     {
         Schema::create('order_has_items', function (Blueprint $table) {
-            $table->bigIncrements('id');
             $table->unsignedBigInteger('order_id');
             $table->unsignedBigInteger('item_id');
             $table->decimal('price', 10, 2);

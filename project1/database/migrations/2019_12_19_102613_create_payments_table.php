@@ -17,7 +17,7 @@ class CreatePaymentsTable extends Migration
             $table->bigIncrements('id');
             $table->unsignedBigInteger('payment_method_id');
             $table->unsignedBigInteger('order_id');
-            $table->bigInteger('card_number');
+            $table->bigInteger('card_number')->nullable();
             $table->dateTime('due_date');
             $table->decimal('total_amount', 12, 2);
             $table->enum('status', ['Submitted', 'Completed', 'Canceled'])->default('Submitted');

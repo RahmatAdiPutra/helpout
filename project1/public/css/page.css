@@ -2,7 +2,15 @@
     overflow: auto
 }
 
-#update:hover, #delete:hover {
+#update:hover, #delete:hover, #remove:hover, #print:hover {
     background-color: darkgray;
     cursor: pointer;
+}
+
+.select-custom {
+    min-width: 150px;
+}
+
+.label-custom {
+    padding-top: 5px;
 }

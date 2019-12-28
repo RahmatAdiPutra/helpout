@@ -12,5 +12,6 @@
 @section('content-wrapper')
 @include('layouts.ui-first.content-wrapper')
 @include('ui.order.form')
+@include('ui.payment.form')
 @include('layouts.ui-first.confirm')
 @endsection

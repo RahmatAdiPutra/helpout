@@ -29,6 +29,7 @@ php artisan make:model Models/Order
 php artisan make:model Models/PaymentMethod
 php artisan make:model Models/Payment
 
+php artisan make:controller Api/SettingController
 php artisan make:controller Api/PositionController
 php artisan make:controller Api/EmployeeController
 php artisan make:controller Api/RoleController

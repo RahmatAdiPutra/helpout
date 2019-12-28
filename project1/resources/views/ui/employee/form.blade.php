@@ -8,7 +8,7 @@
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
-            <form role="form" id="form" autocomplete="off">
+            <form role="form" id="form" autocomplete="off" method="POST">
                 <div class="modal-body" id="form-body">
                     <input type="text" class="form-control" id="id" name="id" hidden>
                     <div class="row">

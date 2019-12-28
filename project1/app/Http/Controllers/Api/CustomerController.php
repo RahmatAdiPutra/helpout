@@ -43,9 +43,17 @@ class CustomerController extends Controller
         }
 
         $searchTerm = $request->get('search');
-        if (empty($searchTerm['value']) === false) {
-            $q = '%' . str_replace(' ', '%', trim($searchTerm['value'])) . '%';
-            $query->where('name', 'like', $q);
+        if (is_array($searchTerm)) {
+            if (empty($searchTerm['value']) === false) {
+                $q = '%' . str_replace(' ', '%', trim($searchTerm['value'])) . '%';
+                $query->where('name', 'like', $q);
+            }
+        } else {
+            if (empty($searchTerm) === false) {
+                $query = Customer::select('*')->with('updatedBy', 'orders');
+                $q = '%' . str_replace(' ', '%', trim($searchTerm)) . '%';
+                $query->where('name', 'like', $q);
+            }
         }
 
         // for get data total and last page,

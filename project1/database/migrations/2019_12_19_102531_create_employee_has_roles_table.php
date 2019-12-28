@@ -14,7 +14,6 @@ class CreateEmployeeHasRolesTable extends Migration
     public function up()
     {
         Schema::create('employee_has_roles', function (Blueprint $table) {
-            $table->bigIncrements('id');
             $table->unsignedBigInteger('employee_id');
 			$table->unsignedBigInteger('role_id');
 

@@ -7,10 +7,6 @@
 
 @section('jsSection')
 <script src="{{ asset('js/ui/customer.js') }}"></script>
-<script>
-    window.dataStatusCustomer = {!! json_encode(\App\Models\Setting::get('customer')) !!};
-    window.dataReligion = {!! json_encode(\App\Models\Setting::get('religion')) !!};
-</script>
 @endsection
 
 @section('content-wrapper')

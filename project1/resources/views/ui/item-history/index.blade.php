@@ -7,9 +7,6 @@
 
 @section('jsSection')
 <script src="{{ asset('js/ui/item-history.js') }}"></script>
-<script>
-    window.dataItem = {!! json_encode(\App\Models\Item::select('id','name')->get()) !!};
-</script>
 @endsection
 
 @section('content-wrapper')

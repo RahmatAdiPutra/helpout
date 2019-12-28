@@ -217,19 +217,37 @@
     }
 
     function selectReligion(val) {
-        $('#religion').select2({
-            placeholder: "Select a religion",
-            data: dataReligion
+        $.ajax({
+            method: 'GET',
+            dataType: 'json',
+            cache: true,
+            url: $('base').attr('href') + '/api/setting/data/religion',
+            success: function (response) {
+                $('#religion').select2({
+                    placeholder: "Select a religion",
+                    data: response.payloads
+                });
+                $('#religion').val(val).trigger('change');
+            },
+            error: function (response) {}
         });
-        $('#religion').val(val).trigger('change');
     }
 
     function selectStatus(val) {
-        $('#status').select2({
-            placeholder: "Select a status",
-            data: dataStatusCustomer.allow
+        $.ajax({
+            method: 'GET',
+            dataType: 'json',
+            cache: true,
+            url: $('base').attr('href') + '/api/setting/data/customer',
+            success: function (response) {
+                $('#status').select2({
+                    placeholder: "Select a status",
+                    data: response.payloads.allow
+                });
+                $('#status').val(val).trigger('change');
+            },
+            error: function (response) {}
         });
-        $('#status').val(val).trigger('change');
     }
 
     function auth() {

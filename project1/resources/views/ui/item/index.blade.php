@@ -7,9 +7,6 @@
 
 @section('jsSection')
 <script src="{{ asset('js/ui/item.js') }}"></script>
-<script>
-    window.dataItemType = {!! json_encode(\App\Models\ItemType::select('id','name')->get()) !!};
-</script>
 @endsection
 
 @section('content-wrapper')

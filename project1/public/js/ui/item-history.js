@@ -256,17 +256,52 @@
     }
 
     function selectItem(val) {
-        var item = dataItem.map(function(data, i) {
-            return {
-                id : data.id,
-                text : data.name
-            }
+        var val = val ? val : 0;
+        $.ajax({
+            method: 'GET',
+            dataType: 'json',
+            cache: true,
+            url: $('base').attr('href') + '/api/item/' + val,
+            success: function (response) {
+                var item = [];
+                if (response.payloads) {
+                    item.push({
+                        id: response.payloads.id,
+                        text: response.payloads.name
+                    });
+                }
+                $('#item_id').select2({
+                    minimumInputLength: 1,
+                    allowClear: true,
+                    placeholder: 'Select a item',
+                    cache: true,
+                    ajax: {
+                        dataType: 'json',
+                        url: $('base').attr('href') + '/api/item/data',
+                        delay: 800,
+                        data: function(params) {
+                            return {
+                                search: params.term
+                            };
+                        },
+                        processResults: function (data, page) {
+                            var item = data.payloads.data.map(function(data, i) {
+                                return {
+                                    id : data.id,
+                                    text : data.name
+                                }
+                            });
+                            return {
+                                results: item
+                            };
+                        },
+                    },
+                    data: item
+                });
+                $('#item_id').val(val).trigger('change');
+            },
+            error: function (response) {}
         });
-        $('#item_id').select2({
-            placeholder: "Select a item",
-            data: item
-        });
-        $('#item_id').val(val).trigger('change');
     }
     
     function auth() {

@@ -434,14 +434,14 @@
                     };
                 },
                 processResults: function (data, page) {
-                    var item = data.payloads.data.map(function(data, i) {
+                    var customer = data.payloads.data.map(function(data, i) {
                         return {
                             id : data.id,
                             text : data.name
                         }
                     });
                     return {
-                        results: item
+                        results: customer
                     };
                 },
             },

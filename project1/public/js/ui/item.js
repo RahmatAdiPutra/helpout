@@ -224,17 +224,26 @@
     }
 
     function selectItemType(val) {
-        var itemType = dataItemType.map(function(data, i) {
-            return {
-                id : data.id,
-                text : data.name
-            }
+        $.ajax({
+            method: 'GET',
+            dataType: 'json',
+            cache: true,
+            url: $('base').attr('href') + '/api/item-type/data',
+            success: function (response) {
+                var itemType = response.payloads.data.map(function(data, i) {
+                    return {
+                        id : data.id,
+                        text : data.name
+                    }
+                });
+                $('#item_type_id').select2({
+                    placeholder: "Select a type",
+                    data: itemType
+                });
+                $('#item_type_id').val(val).trigger('change');
+            },
+            error: function (response) {}
         });
-        $('#item_type_id').select2({
-            placeholder: "Select a type",
-            data: itemType
-        });
-        $('#item_type_id').val(val).trigger('change');
     }
     
     function auth() {

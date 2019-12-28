@@ -146,7 +146,16 @@
                 form.find('#address').val(response.payloads.address);
                 form.find('#phone_number').val(response.payloads.phone_number);
                 form.find('#email').val(response.payloads.email);
-                selectStatus($.inArray(response.payloads.status,dataEmployee.status));
+                $.ajax({
+                    method: 'GET',
+                    dataType: 'json',
+                    cache: true,
+                    url: $('base').attr('href') + '/api/setting/data/employee',
+                    success: function (res) {
+                        selectStatus($.inArray(response.payloads.status,res.payloads.status));
+                    },
+                    error: function (response) {}
+                });
             },
             error: function (response) {}
         });
@@ -214,39 +223,66 @@
     }
 
     function selectPosition(val) {
-        var position = dataPosition.map(function(data, i) {
-            return {
-                id : data.id,
-                text : data.name
-            }
+        $.ajax({
+            method: 'GET',
+            dataType: 'json',
+            cache: true,
+            url: $('base').attr('href') + '/api/position/data',
+            success: function (response) {
+                var position = response.payloads.data.map(function(data, i) {
+                    return {
+                        id : data.id,
+                        text : data.name
+                    }
+                });
+                $('#position_id').select2({
+                    placeholder: "Select a position",
+                    data: position
+                });
+                $('#position_id').val(val).trigger('change');
+            },
+            error: function (response) {}
         });
-        $('#position_id').select2({
-            placeholder: "Select a position",
-            data: position
-        });
-        $('#position_id').val(val).trigger('change');
     }
 
     function selectReligion(val) {
-        $('#religion').select2({
-            placeholder: "Select a religion",
-            data: dataReligion
+        $.ajax({
+            method: 'GET',
+            dataType: 'json',
+            cache: true,
+            url: $('base').attr('href') + '/api/setting/data/religion',
+            success: function (response) {
+                $('#religion').select2({
+                    placeholder: "Select a religion",
+                    data: response.payloads
+                });
+                $('#religion').val(val).trigger('change');
+            },
+            error: function (response) {}
         });
-        $('#religion').val(val).trigger('change');
     }
 
     function selectStatus(val) {
-        var status = dataEmployee.status.map(function(data, i) {
-            return {
-                id : i,
-                text : data
-            }
+        $.ajax({
+            method: 'GET',
+            dataType: 'json',
+            cache: true,
+            url: $('base').attr('href') + '/api/setting/data/employee',
+            success: function (response) {
+                var status = response.payloads.status.map(function(data, i) {
+                    return {
+                        id : i,
+                        text : data
+                    }
+                });
+                $('#status').select2({
+                    placeholder: "Select a status",
+                    data: status
+                });
+                $('#status').val(val).trigger('change');
+            },
+            error: function (response) {}
         });
-        $('#status').select2({
-            placeholder: "Select a status",
-            data: status
-        });
-        $('#status').val(val).trigger('change');
     }
 
     function hideColumn(event) {

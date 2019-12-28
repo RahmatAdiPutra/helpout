@@ -41,6 +41,9 @@ class OrderController extends Controller
                 $query = Order::select('*')->with('updatedBy', 'customer', 'items', 'payment');
                 $query->whereIn('id', $q2);
             }
+        } else {
+            $id = Payment::select('order_id')->pluck('order_id');
+            $query->whereNotIn('id', $id);
         }
 
         // for get data total and last page,

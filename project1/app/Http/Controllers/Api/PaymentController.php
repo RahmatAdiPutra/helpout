@@ -39,9 +39,13 @@ class PaymentController extends Controller
         $searchTerm = $request->get('search');
         if (empty($searchTerm['value']) === false) {
             $q = '%' . str_replace(' ', '%', trim($searchTerm['value'])) . '%';
-            $q = Customer::select('id')->where('name', 'like', $q)->pluck('id');
-            $q = Order::select('id')->whereIn('customer_id', $q)->pluck('id');
-            $query->whereIn('order_id', $q);
+            $q1 = Customer::select('id')->where('name', 'like', $q)->pluck('id');
+            $q2 = Order::select('id')->whereIn('customer_id', $q1)->pluck('id');
+            $query->whereIn('order_id', $q2);
+            if ($query->get()->isEmpty()) {
+                $query = Payment::select('*')->with('updatedBy', 'paymentMethod', 'order');
+                $query->where('status', 'like', $q);
+            }
         }
 
         // for get data total and last page,

@@ -64,7 +64,7 @@
                 name: 'action',
                 orderable: false,
                 mRender: function (data, type, row) {
-                   if (row.payment) {
+                    if (row.payment) {
                         return `<div data-id="${row.id}" id="print"><i class="fas fa-print"></i></div>`;
                     } else {
                         return `

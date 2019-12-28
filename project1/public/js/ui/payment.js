@@ -73,7 +73,14 @@
                 name: 'action',
                 orderable: false,
                 mRender: function (data, type, row) {
-                    return `<div data-id="${row.id}" id="print"><i class="fas fa-print"></i></div>`;
+                    if (row.status == 'Submitted') {
+                        return `
+                            <div data-id="${row.id}" id="update"><i class="nav-icon far fa-edit"></i></div>
+                            <div data-id="${row.id}" id="print"><i class="fas fa-print"></i></div>
+                        `;
+                    } else {
+                        return `<div data-id="${row.id}" id="print"><i class="fas fa-print"></i></div>`;
+                    }
                 }
             },
         ]

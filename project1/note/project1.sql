@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 29, 2019 at 12:11 PM
+-- Generation Time: Dec 29, 2019 at 02:55 PM
 -- Server version: 10.4.6-MariaDB
 -- PHP Version: 7.3.9
 
@@ -291,7 +291,7 @@ CREATE TABLE `employees` (
 
 INSERT INTO `employees` (`id`, `position_id`, `id_card_number`, `name`, `gender`, `birthday`, `religion`, `city`, `address`, `phone_number`, `email`, `email_verified_at`, `token`, `password`, `status`, `remember_token`, `created_at`, `updated_at`, `deleted_at`) VALUES
 (1, 3, '6021db93-aec1-3a35-b999-641350400f04', 'Imelda Reynolds', 'Female', '1981-09-05', 'Kristen', 'Kristopherberg', '883 Marianne Summit Apt. 809\nGisselleville, AR 69595', '1-482-665-9325', '304122929nadia83@hotmail.com', NULL, NULL, '36bea606ff76c78c3910c22fd09034beeffde9f257c00f33bd524b8beebb2223', 0, NULL, '2019-12-27 19:18:36', '2019-12-27 19:18:36', NULL),
-(2, 5, '4e1c3fab-af39-3fc4-a1a7-4d1e48cf95e1', 'Grant Fadel', 'Male', '2002-05-10', 'Islam', 'New Amariburgh', '1721 Connelly Ville\nAracelifurt, MA 58297', '+1-914-219-4022', 'aman@gmail.com', NULL, NULL, '$2y$10$yebXMC1KpJR4ZXQ4SNyQmuu2.RLxN1e1/yFLQic4K/6FGwu5pATL.', 1, '2LDUcNwsZCaZ4gTYuJLIrCUzh2VEMognjt2ODrIa5Ea8cBVXf5HehdXRqtLZ', '2019-12-27 19:18:36', '2019-12-27 19:18:36', NULL),
+(2, 12, '4e1c3fab-af39-3fc4-a1a7-4d1e48cf95e1', 'Aman', 'Male', '2002-05-10', 'Islam', 'UK', '1721 Connelly Ville\r\nAracelifurt, MA 58297', '+1-914-219-4022', 'aman@gmail.com', NULL, NULL, '$2y$10$yebXMC1KpJR4ZXQ4SNyQmuu2.RLxN1e1/yFLQic4K/6FGwu5pATL.', 1, '2LDUcNwsZCaZ4gTYuJLIrCUzh2VEMognjt2ODrIa5Ea8cBVXf5HehdXRqtLZ', '2019-12-27 19:18:36', '2019-12-29 04:39:53', NULL),
 (3, 5, 'ae0d179d-0980-3626-9dc3-f137bdf6b4fb', 'Asia Hills', 'Male', '1972-09-05', 'Kristen', 'Ruthechester', '2521 Rempel Unions Apt. 670\nCedrickview, MN 77847-6827', '617.325.7306 x73819', '38766christina06@hotmail.com', NULL, NULL, '384b82e078c9dc24bd8fdfdf1386cb2ab3f98a4f37bbd0623a33e2a4aa31bd58', 0, NULL, '2019-12-27 19:18:36', '2019-12-27 19:18:36', NULL),
 (4, 3, '9c484082-75f7-3e35-8544-5b670b89a751', 'Katrina Rath', 'Female', '2015-02-10', 'Budha', 'North Ciara', '43075 Eichmann Walks Apt. 737\nAdellmouth, GA 88252-3472', '+1-323-237-8657', '9129xschaefer@yahoo.com', NULL, NULL, '71f6c67224a681f4340653c6bfa31d4aaf65dabd250e9797983152fdcca21477', 1, NULL, '2019-12-27 19:18:37', '2019-12-27 19:18:37', NULL),
 (5, 5, '580a56af-28b3-3259-8f93-4b9b8cf0d289', 'Dr. Felton Halvorson V', 'Male', '2006-12-16', 'Islam', 'West Lysanneville', '277 Adelbert Cliffs\nSouth Wellington, MT 15843-3739', '1-213-293-5909 x34758', '5645gail.little@gmail.com', NULL, NULL, '577bfe20f56652d2940c9865fa3a8ba9e75d5a694376dd55bb832cc7865f9fa6', 0, NULL, '2019-12-27 19:18:37', '2019-12-27 19:18:37', NULL),
@@ -352,7 +352,6 @@ CREATE TABLE `employee_has_roles` (
 INSERT INTO `employee_has_roles` (`employee_id`, `role_id`) VALUES
 (1, 1),
 (1, 1),
-(2, 2),
 (3, 1),
 (3, 2),
 (4, 2),
@@ -378,7 +377,9 @@ INSERT INTO `employee_has_roles` (`employee_id`, `role_id`) VALUES
 (18, 1),
 (19, 2),
 (19, 2),
-(20, 2);
+(20, 2),
+(2, 3),
+(2, 2);
 
 -- --------------------------------------------------------
 
@@ -1862,7 +1863,8 @@ INSERT INTO `positions` (`id`, `name`, `updated_by`, `created_at`, `updated_at`,
 (8, 'Interviewer', '0', '2019-12-27 19:18:58', '2019-12-27 19:18:58', NULL),
 (9, 'Mechanical Drafter', '6', '2019-12-27 19:18:58', '2019-12-27 19:18:58', NULL),
 (10, 'Life Scientists', '4', '2019-12-27 19:18:58', '2019-12-27 19:18:58', NULL),
-(11, 'Cashier', '2', '2019-12-28 03:18:07', '2019-12-29 03:11:28', NULL);
+(11, 'Cashier', '2', '2019-12-28 03:18:07', '2019-12-29 03:11:28', NULL),
+(12, 'Developer', '2', '2019-12-29 04:39:14', '2019-12-29 04:39:14', NULL);
 
 -- --------------------------------------------------------
 
@@ -1884,8 +1886,10 @@ CREATE TABLE `roles` (
 --
 
 INSERT INTO `roles` (`id`, `name`, `updated_by`, `created_at`, `updated_at`, `deleted_at`) VALUES
-(1, 'autem', '16', '2019-12-27 19:18:38', '2019-12-27 19:18:38', NULL),
-(2, 'incidunt', '10', '2019-12-27 19:18:38', '2019-12-27 19:18:38', NULL);
+(1, 'Admin', '2', '2019-12-27 19:18:38', '2019-12-29 05:17:37', NULL),
+(2, 'Operator', '2', '2019-12-27 19:18:38', '2019-12-29 05:08:39', NULL),
+(3, 'Programmer', '2', '2019-12-29 05:09:48', '2019-12-29 05:09:48', NULL),
+(4, 'Tester', '2', '2019-12-29 05:29:56', '2019-12-29 05:29:56', NULL);
 
 -- --------------------------------------------------------
 
@@ -1903,8 +1907,6 @@ CREATE TABLE `role_has_permissions` (
 --
 
 INSERT INTO `role_has_permissions` (`role_id`, `permission_id`) VALUES
-(1, 54),
-(1, 15),
 (2, 26),
 (2, 25),
 (2, 33),
@@ -1936,7 +1938,12 @@ INSERT INTO `role_has_permissions` (`role_id`, `permission_id`) VALUES
 (2, 23),
 (2, 13),
 (2, 17),
-(2, 1);
+(2, 1),
+(1, 54),
+(1, 15),
+(3, 51),
+(3, 16),
+(4, 51);
 
 -- --------------------------------------------------------
 
@@ -2183,13 +2190,13 @@ ALTER TABLE `permissions`
 -- AUTO_INCREMENT for table `positions`
 --
 ALTER TABLE `positions`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT for table `roles`
 --
 ALTER TABLE `roles`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `users`

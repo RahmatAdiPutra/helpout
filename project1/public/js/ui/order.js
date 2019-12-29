@@ -93,8 +93,6 @@
     $('.content .container-second').show();
     $('.content .container-second').html(`
         <div class="row pb-2">
-            <input type="text" class="form-control" id="id" name="id" hidden>
-            <input type="text" class="form-control" id="updated_by" name="updated_by" hidden>
             <div class="col-lg-12 col-sm-6">
                 <button type="button" class="btn btn-default float-sm-left" id="add">Add Item</button>
             </div><!-- /.col -->
@@ -132,7 +130,7 @@
         </div>
         <div class="row">
             <div class="col-12">
-                <button type="button" class="btn btn-primary float-sm-right m-1" id="pay" data-toggle="modal" data-target="#modalForm" disabled>Pay</button>
+                <button type="button" class="btn btn-primary float-sm-right m-1" id="pay" disabled>Pay</button>
                 <button type="button" class="btn btn-primary float-sm-right m-1" id="save-order" disabled>Save Order</button>
                 <button type="button" class="btn btn-default float-sm-right m-1" id="clear">Clear</button>
             </div><!-- /.col -->
@@ -149,10 +147,7 @@
     $('#clear').on('click', clearForm);
     $('#pay').on('click', payment);
     $('#save-order').on('click', saveDataOrder);
-
-    $('#due_date').datepicker({
-        format: 'yyyy-mm-dd'
-    });
+    $('#detailedTable tbody').on('click', '#print', invoice);
 
     selectCustomer();
 
@@ -249,12 +244,65 @@
 
     function payment(event) {
         event.preventDefault();
+        $('#form-header .modal-title').html(upperCaseFirst($(this).attr('id')));
+        $('#modalForm').modal('show');
         var date = new Date();
         date.setDate(date.getDate() + 1);
         selectPaymentMethod();
         selectStatusPayment();
-        $('#due_date').datepicker('setDate', date);
+        $('#due_date').val(moment(date).format('YYYY-MM-DD HH:mm:ss'));
         totalAmount()
+    }
+
+    function invoice(event) {
+        event.preventDefault();
+        var id = $(this).attr("data-id");
+        $.ajax({
+            method: 'GET',
+            dataType: 'json',
+            url: $('base').attr('href') + '/api/payment/' + id,
+            success: function (response) {
+                var sub_total_price = 0;
+                var sub_total_discount = 0;
+                var res = response.payloads;
+                var invoiceNumber = moment(res.updated_at).format('YYYYMMDDHHmmss')+'-'+res.id+'-'+res.order_id+'-'+res.payment_method_id;
+                $('#print_invoice_number').html(': '+invoiceNumber);
+                $('#print_payment_method').html(': '+res.payment_method.name);
+                $('#print_card_number').html(': '+res.card_number);
+                $('#print_cashier_name').html(': '+res.updated_by.name);
+                $('#print_customer_name').html(': '+res.order.customer.name);
+                $('#print_date').html(': '+moment(new Date()).format('DD MMMM YYYY HH:mm:ss'));
+                $('#print_due_date').html(': '+moment(res.due_date).format('DD MMMM YYYY HH:mm:ss'));
+                $('#print_payment_date').html(': '+moment(res.updated_at).format('DD MMMM YYYY HH:mm:ss'));
+                $('#print_payment_status').html(': '+res.status);
+                res.order.items.forEach((v, index) => {
+                    sub_total_price += v.pivot.quantity * v.pivot.price;
+                    sub_total_discount += v.pivot.quantity * v.pivot.price * v.pivot.discount;
+                    $('#detailedTableSecond tbody').append(`
+                        <tr>
+                            <td>${res.order.updated_at}</td>
+                            <td>${v.name}</td>
+                            <td>${v.pivot.quantity}</td>
+                            <td>Rp ${$.number(v.pivot.price, 2)}</td>
+                            <td>${v.pivot.discount * 100}</td>
+                            <td>Rp ${$.number(v.pivot.quantity * v.pivot.price, 2)}</td>
+                            <td>Rp ${$.number(v.pivot.quantity * v.pivot.price * v.pivot.discount, 2)}</td>
+                            <td>Rp ${$.number(v.pivot.amount, 2)}</td>
+                        </tr>
+                    `);
+                });
+                $('#print_total_price').html('Rp '+$.number(sub_total_price, 2));
+                $('#print_total_discount').html('Rp '+$.number(sub_total_discount, 2));
+                $('#print_total_amount').html('Rp '+$.number(res.total_amount, 2));
+                var printContents = document.getElementById('invoice').innerHTML;
+                var originalContents = document.body.innerHTML;
+                document.body.innerHTML = printContents;
+                w.print();
+                document.body.innerHTML = originalContents;
+                w.location.reload();
+            },
+            error: function (response) {}
+        });
     }
 
     function createData(event) {

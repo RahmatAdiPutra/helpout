@@ -44,7 +44,7 @@ class PaymentController extends Controller
             $query->whereIn('order_id', $q2);
             if ($query->get()->isEmpty()) {
                 $query = Payment::select('*')->with('updatedBy', 'paymentMethod', 'order');
-                $query->where('status', 'like', $q);
+                $query->where('status', 'like', $q)->orderBy('updated_at', 'desc');
             }
         }
 

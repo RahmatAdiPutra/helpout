@@ -18,6 +18,7 @@ class RedirectIfAuthenticated
      */
     public function handle($request, Closure $next, $guard = null)
     {
+        // this is middleware exec after exec constructor from login controller
         if (Auth::guard($guard)->check()) {
             return redirect(RouteServiceProvider::HOME);
         }

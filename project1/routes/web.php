@@ -16,9 +16,9 @@
 
 // Auth::routes();
 
-Route::get('/', function () {
-    return view('ui.dashboard.index');
-});
+// Route::get('/home', function () {
+//     return view('home');
+// });
 
 Route::group([
     'prefix' => 'test',
@@ -28,9 +28,37 @@ Route::group([
 });
 
 Route::group([
-    // 'middleware' => ['auth'],
+    'namespace' => 'AuthEmployee',
+    'as' => 'employee.'
+],function () {
+    Route::group([
+        'middleware' => ['auth:employee']
+    ],function () {
+        Route::get('employee-register', 'RegisterController@showRegistrationForm')->name('register');
+        Route::post('employee-register', 'RegisterController@register');
+    });
+
+    Route::get('employee-login', 'LoginController@showLoginForm')->name('login');
+    Route::post('employee-login', 'LoginController@login');
+    Route::post('employee-logout', 'LoginController@logout')->name('logout');
+
+    Route::get('employee-verify', 'RegisterController@verify')->name('verify');
+    Route::get('employee-verify/{email}/{remember_token}', 'RegisterController@sendEmailDone')->name('send');
+
+    Route::get('employee-password/reset', 'ForgotPasswordController@showLinkRequestForm')->name('password.request');
+    Route::post('employee-password/email', 'ForgotPasswordController@sendResetLinkEmail')->name('password.email');
+    Route::get('employee-password/reset/{token}', 'ResetPasswordController@showResetForm')->name('password.reset');
+    Route::post('employee-password/reset', 'ResetPasswordController@reset')->name('password.update');
+});
+
+Route::group([
+    'middleware' => ['auth:employee'],
     'namespace' => 'Web'
 ],function () {
+    Route::get('/', function () {
+        return view('ui.dashboard.index');
+    });
+
     Route::group([
         'prefix' => 'customer',
         'as' => 'customer.',

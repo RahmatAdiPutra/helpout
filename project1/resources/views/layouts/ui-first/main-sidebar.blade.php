@@ -118,7 +118,7 @@
                         </p>
                     </a>
                 </li>
-                {{-- <li class="nav-item has-treeview">
+                <li class="nav-item has-treeview">
                     <a href="#" class="nav-link">
                         <i class="nav-icon far fa-plus-square"></i>
                         <p>
@@ -127,32 +127,26 @@
                         </p>
                     </a>
                     <ul class="nav nav-treeview">
-                        <li class="nav-item">
+                        {{-- <li class="nav-item">
                             <a href="{{ url('/') }}" class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>Role Permission</p>
                             </a>
-                        </li>
+                        </li> --}}
                         <li class="nav-item">
-                            <a href="{{ url('/') }}" class="nav-link">
-                                <i class="far fa-circle nav-icon"></i>
-                                <p>Login</p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="{{ url('/') }}" class="nav-link">
+                            <a href="{{ url('/employee-register') }}" class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>Register</p>
                             </a>
                         </li>
-                        <li class="nav-item">
+                        {{-- <li class="nav-item">
                             <a href="{{ url('/') }}" class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>Forgot Password</p>
                             </a>
-                        </li>
+                        </li> --}}
                     </ul>
-                </li> --}}
+                </li>
             </ul>
         </nav>
         <!-- /.sidebar-menu -->

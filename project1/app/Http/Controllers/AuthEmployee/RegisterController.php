@@ -1,11 +1,14 @@
 <?php
 
-namespace App\Http\Controllers\Auth;
+namespace App\Http\Controllers\AuthEmployee;
 
 use App\Http\Controllers\Controller;
+use App\Models\Employee;
 use App\Providers\RouteServiceProvider;
-use App\User;
+use Illuminate\Auth\Events\Registered;
 use Illuminate\Foundation\Auth\RegistersUsers;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 
@@ -38,7 +41,7 @@ class RegisterController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('guest');
+        // $this->middleware('guest:employee');
     }
 
     /**
@@ -51,6 +54,7 @@ class RegisterController extends Controller
     {
         return Validator::make($data, [
             'name' => ['required', 'string', 'max:255'],
+            'position_id' => ['required'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
         ]);
@@ -64,10 +68,43 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-        return User::create([
+        return Employee::create([
             'name' => $data['name'],
-            'email' => $data['email'],
-            'password' => Hash::make($data['password']),
-        ]);
+            'position_id' => $data['position_id'],
+			'email' => $data['email'],
+			'password' => Hash::make($data['password'])
+		]);
     }
+
+    /**
+	 * Show the application registration form.
+	 *
+	 * @return \Illuminate\Http\Response
+	 */
+	public function showRegistrationForm() {
+		return view('ui.auth.employee.register');
+    }
+
+    /**
+	 * Handle a registration request for the application.
+	 *
+	 * @param  \Illuminate\Http\Request  $request
+	 * @return \Illuminate\Http\Response
+	 */
+	public function register(Request $request) {
+		$this->validator($request->all())->validate();
+
+		event(new Registered($user = $this->create($request->all())));
+
+		return redirect(route('employee.login'))->with('success', 'Registered! Now verify your email to active your account');
+	}
+
+	/**
+	 * Get the guard to be used during registration.
+	 *
+	 * @return \Illuminate\Contracts\Auth\StatefulGuard
+	 */
+	protected function guard() {
+		return Auth::guard('employee');
+	}
 }

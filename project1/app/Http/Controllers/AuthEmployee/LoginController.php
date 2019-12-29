@@ -1,10 +1,12 @@
 <?php
 
-namespace App\Http\Controllers\Auth;
+namespace App\Http\Controllers\AuthEmployee;
 
 use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class LoginController extends Controller
 {
@@ -35,6 +37,62 @@ class LoginController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('guest')->except('logout');
+        $this->middleware('guest:employee')->except('logout');
     }
+
+	/**
+	 * Get the needed authorization credentials from the request.
+	 *
+	 * @param  \Illuminate\Http\Request  $request
+	 * @return array
+	 */
+	protected function credentials(Request $request) {
+		return ['email' => $request->{$this->username()}, 'password' => $request->password, 'status' => '1'];
+	}
+
+	/**
+	 * Send the response after the user was authenticated.
+	 *
+	 * @param  \Illuminate\Http\Request  $request
+	 * @return \Illuminate\Http\Response
+	 */
+	protected function sendLoginResponse(Request $request) {
+		$request->session()->regenerate();
+
+		$this->clearLoginAttempts($request);
+
+		return redirect('/');
+	}
+
+	/**
+	 * Show the application's login form.
+	 *
+	 * @return \Illuminate\Http\Response
+	 */
+	public function showLoginForm() {
+		return view('ui.auth.employee.login');
+	}
+
+	/**
+	 * Log the user out of the application.
+	 *
+	 * @param  \Illuminate\Http\Request  $request
+	 * @return \Illuminate\Http\Response
+	 */
+	public function logout(Request $request) {
+		$this->guard()->logout();
+
+		$request->session()->invalidate();
+
+		return $this->loggedOut($request) ?: redirect('/employee-login');
+	}
+
+	/**
+	 * Get the guard to be used during authentication.
+	 *
+	 * @return \Illuminate\Contracts\Auth\StatefulGuard
+	 */
+	protected function guard() {
+		return Auth::guard('employee');
+	}
 }

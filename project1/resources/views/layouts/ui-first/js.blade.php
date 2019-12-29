@@ -54,5 +54,5 @@
 
 @yield('jsSection')
 <script>
-    window.dataAuth = {!! json_encode(\App\Models\Employee::select('id')->inRandomOrder()->first()) !!};
+    window.dataAuth = {!! json_encode(Auth::user()) !!};
 </script>

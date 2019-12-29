@@ -294,12 +294,7 @@
                 $('#print_total_price').html('Rp '+$.number(sub_total_price, 2));
                 $('#print_total_discount').html('Rp '+$.number(sub_total_discount, 2));
                 $('#print_total_amount').html('Rp '+$.number(res.total_amount, 2));
-                var printContents = document.getElementById('invoice').innerHTML;
-                var originalContents = document.body.innerHTML;
-                document.body.innerHTML = printContents;
-                w.print();
-                document.body.innerHTML = originalContents;
-                w.location.reload();
+                print('invoice')
             },
             error: function (response) {}
         });
@@ -611,5 +606,18 @@
             return letter.toUpperCase();
         });
         return str;
+    }
+
+    function print(elementId) {
+        var printContent = document.getElementById(elementId).innerHTML;
+        var printHead = document.head.innerHTML;
+        var print = w.open("");
+        print.document.write(printHead);
+        print.document.write(printContent);
+        print.focus();
+        setTimeout(function() {
+            print.print();
+            // print.close();
+        },2000);
     }
 })(window, window.jQuery);

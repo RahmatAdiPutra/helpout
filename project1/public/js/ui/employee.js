@@ -157,6 +157,7 @@
                     },
                     error: function (response) {}
                 });
+                selectRole();
                 response.payloads.roles.forEach((v, index) => {
                     var option = new Option(v.name, v.id, true, true);
                     $('#role_id').append(option).trigger('change');
@@ -229,26 +230,35 @@
     }
 
     function selectRole(val) {
-        $.ajax({
-            method: 'GET',
-            dataType: 'json',
+        $('#role_id').select2({
+            multiple:true,
+            minimumInputLength: 1,
+            allowClear: true,
+            placeholder: 'Select roles',
             cache: true,
-            url: $('base').attr('href') + '/api/role/data',
-            success: function (response) {
-                var role = response.payloads.data.map(function(data, i) {
+            ajax: {
+                dataType: 'json',
+                url: $('base').attr('href') + '/api/role/data',
+                delay: 800,
+                data: function(params) {
                     return {
-                        id : data.id,
-                        text : data.name
-                    }
-                });
-                $('#role_id').select2({
-                    placeholder: "Select roles",
-                    data: role
-                });
-                $('#role_id').val(val).trigger('change');
-            },
-            error: function (response) {}
+                        search: params.term
+                    };
+                },
+                processResults: function (data, page) {
+                    var role = data.payloads.data.map(function(data, i) {
+                        return {
+                            id : data.id,
+                            text : data.name
+                        }
+                    });
+                    return {
+                        results: role
+                    };
+                },
+            }
         });
+        $('#role_id').val(val).trigger('change');
     }
 
     function selectPosition(val) {

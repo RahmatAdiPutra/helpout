@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 28, 2019 at 03:52 PM
+-- Generation Time: Dec 29, 2019 at 12:11 PM
 -- Server version: 10.4.6-MariaDB
 -- PHP Version: 7.3.9
 
@@ -249,7 +249,7 @@ INSERT INTO `customers` (`id`, `id_card_number`, `name`, `gender`, `birthday`, `
 (191, '3721cab0-cae4-30dd-a279-4ddc2d7bc8f5', 'Prof. Milton Kuvalis', 'female', '2016-12-05', 'Konghucu', 'South Priscillafort', '69095 Grant Unions Suite 915\nGreggstad, MD 08057', '386-882-7543 x18895', '81179596elinore.gorczany@hotmail.com', NULL, NULL, '36d9d9b6b0b5e3ac912751be7df6fe387fea96eee12aa30aa22c23713f706163', 'Basic', NULL, '39', '2019-12-27 19:19:06', '2019-12-27 19:19:06', NULL),
 (192, '4257905e-eee7-3f95-bf62-51d4af5f890f', 'Mrs. Lacey Hodkiewicz IV', 'female', '1987-09-24', 'Hindu', 'Lake Marielle', '7194 Medhurst Springs\nNew Toni, MO 83953-7974', '365.529.5595', '93roderick52@hotmail.com', NULL, NULL, '9ae24d1e05069aa4e27b33f33ffe76600cf4f7c03a40fa859172859756c51f2e', 'Basic', NULL, '15', '2019-12-27 19:19:06', '2019-12-27 19:19:06', NULL),
 (193, '0b410f07-3a63-3d48-8e50-969d3ed5ddac', 'Isom Cummings', 'female', '1981-07-22', 'Budha', 'East Jeanne', '7458 Terry Junction\nNew Toyfurt, CT 53897-2919', '+1.973.625.9775', '98elnora74@yahoo.com', NULL, NULL, '5bf5ea7842c9603c55418f0267619829423c1e66ba1c9c32e73038fc850dd421', 'Basic', NULL, '8', '2019-12-27 19:19:06', '2019-12-27 19:19:06', NULL),
-(194, '0f5a0b60-927c-367a-8bae-4b2f5524f723', 'Prof. Jamie Lubowitz II', 'female', '1993-10-26', 'Islam', 'East Cierrachester', '98998 Lemuel Glens Apt. 009\nWest Ally, NH 91824', '297-278-3970 x128', '1134483remington79@yahoo.com', NULL, NULL, '5a9434eddf6bfbd91b6f711cfb24e6e14377b77fadca72e5a3b653101bbb0199', 'Basic', NULL, '13', '2019-12-27 19:19:06', '2019-12-27 19:19:06', NULL),
+(194, '0f5a0b60-927c-367a-8bae-4b2f5524f723', 'Prof. Jamie Lubowitz II', 'female', '1993-10-26', 'Islam', 'East Cierrachester', '98998 Lemuel Glens Apt. 009\r\nWest Ally, NH 91824', '297-278-3970 x128', '1134483remington79@yahoo.com', NULL, NULL, '5a9434eddf6bfbd91b6f711cfb24e6e14377b77fadca72e5a3b653101bbb0199', 'Basic', NULL, '13', '2019-12-27 19:19:06', '2019-12-28 08:05:14', NULL),
 (195, 'e87678f8-e52b-32db-9aef-08fadd2e0246', 'Christine Wilkinson', 'female', '1994-05-24', 'Budha', 'Weissnatstad', '233 Price Route\nSouth Katlynnstad, MO 75451', '986-456-9765 x760', '42587mia.labadie@gmail.com', NULL, NULL, 'f3820034671092414d540c141983ef8de3cbd435cc205dd6802f52a6faadf8f9', 'Premium', NULL, '14', '2019-12-27 19:19:06', '2019-12-27 19:19:06', NULL),
 (196, 'fa04f57c-20d5-3439-bc5b-66696559e218', 'Dr. Tyrique Swift', 'female', '2017-11-13', 'Kristen', 'Josiannebury', '72882 Jaskolski Track Suite 398\nPort Frank, ID 72489-5624', '949-560-4021 x574', '70100sally67@gmail.com', NULL, NULL, 'ff60a50a62c0f17c220a9eafe2e5096689698f40450e266dc12da6c231f0ce9c', 'Premium', NULL, '2', '2019-12-27 19:19:06', '2019-12-27 19:19:06', NULL),
 (197, 'b1a88c12-3d32-349f-b16b-6d25540d2b92', 'Raymundo Kessler II', 'male', '1993-01-15', 'Konghucu', 'New Alejandraberg', '49213 Larkin Forks\nJudahton, OH 64660', '+1.354.769.5910', '76veronica.hauck@yahoo.com', NULL, NULL, '36887eb74611147a502b1c4e4ed0ecda35ed5b7c06a8207f75c495557aa46426', 'Basic', NULL, '20', '2019-12-27 19:19:06', '2019-12-27 19:19:06', NULL),
@@ -291,7 +291,7 @@ CREATE TABLE `employees` (
 
 INSERT INTO `employees` (`id`, `position_id`, `id_card_number`, `name`, `gender`, `birthday`, `religion`, `city`, `address`, `phone_number`, `email`, `email_verified_at`, `token`, `password`, `status`, `remember_token`, `created_at`, `updated_at`, `deleted_at`) VALUES
 (1, 3, '6021db93-aec1-3a35-b999-641350400f04', 'Imelda Reynolds', 'Female', '1981-09-05', 'Kristen', 'Kristopherberg', '883 Marianne Summit Apt. 809\nGisselleville, AR 69595', '1-482-665-9325', '304122929nadia83@hotmail.com', NULL, NULL, '36bea606ff76c78c3910c22fd09034beeffde9f257c00f33bd524b8beebb2223', 0, NULL, '2019-12-27 19:18:36', '2019-12-27 19:18:36', NULL),
-(2, 5, '4e1c3fab-af39-3fc4-a1a7-4d1e48cf95e1', 'Grant Fadel', 'Male', '2002-05-10', 'Islam', 'New Amariburgh', '1721 Connelly Ville\nAracelifurt, MA 58297', '+1-914-219-4022', '7531143slockman@hotmail.com', NULL, NULL, '138b3f4c46877fb458374d181e37f40decd4b1fae0fcfe1e1a7d1d81c4d24344', 1, NULL, '2019-12-27 19:18:36', '2019-12-27 19:18:36', NULL),
+(2, 5, '4e1c3fab-af39-3fc4-a1a7-4d1e48cf95e1', 'Grant Fadel', 'Male', '2002-05-10', 'Islam', 'New Amariburgh', '1721 Connelly Ville\nAracelifurt, MA 58297', '+1-914-219-4022', 'aman@gmail.com', NULL, NULL, '$2y$10$yebXMC1KpJR4ZXQ4SNyQmuu2.RLxN1e1/yFLQic4K/6FGwu5pATL.', 1, '2LDUcNwsZCaZ4gTYuJLIrCUzh2VEMognjt2ODrIa5Ea8cBVXf5HehdXRqtLZ', '2019-12-27 19:18:36', '2019-12-27 19:18:36', NULL),
 (3, 5, 'ae0d179d-0980-3626-9dc3-f137bdf6b4fb', 'Asia Hills', 'Male', '1972-09-05', 'Kristen', 'Ruthechester', '2521 Rempel Unions Apt. 670\nCedrickview, MN 77847-6827', '617.325.7306 x73819', '38766christina06@hotmail.com', NULL, NULL, '384b82e078c9dc24bd8fdfdf1386cb2ab3f98a4f37bbd0623a33e2a4aa31bd58', 0, NULL, '2019-12-27 19:18:36', '2019-12-27 19:18:36', NULL),
 (4, 3, '9c484082-75f7-3e35-8544-5b670b89a751', 'Katrina Rath', 'Female', '2015-02-10', 'Budha', 'North Ciara', '43075 Eichmann Walks Apt. 737\nAdellmouth, GA 88252-3472', '+1-323-237-8657', '9129xschaefer@yahoo.com', NULL, NULL, '71f6c67224a681f4340653c6bfa31d4aaf65dabd250e9797983152fdcca21477', 1, NULL, '2019-12-27 19:18:37', '2019-12-27 19:18:37', NULL),
 (5, 5, '580a56af-28b3-3259-8f93-4b9b8cf0d289', 'Dr. Felton Halvorson V', 'Male', '2006-12-16', 'Islam', 'West Lysanneville', '277 Adelbert Cliffs\nSouth Wellington, MT 15843-3739', '1-213-293-5909 x34758', '5645gail.little@gmail.com', NULL, NULL, '577bfe20f56652d2940c9865fa3a8ba9e75d5a694376dd55bb832cc7865f9fa6', 0, NULL, '2019-12-27 19:18:37', '2019-12-27 19:18:37', NULL),
@@ -325,11 +325,14 @@ INSERT INTO `employees` (`id`, `position_id`, `id_card_number`, `name`, `gender`
 (33, 8, 'fffd2620-61bc-3a85-83ea-025540dca3b3', 'Ms. Kylee Wintheiser', 'Female', '2014-08-29', 'Kristen', 'North Judsonview', '8145 Becker Roads\nEzrachester, NM 83646-8488', '463-849-7607 x550', '722kole.gleichner@hotmail.com', NULL, NULL, '08f440bbba28cb84531d73c84c82434204be2f85ad4b7195f42595f3b55b6a01', 1, NULL, '2019-12-27 19:18:59', '2019-12-27 19:18:59', NULL),
 (34, 5, 'c630b10c-333d-349f-b6aa-fc7f7639094b', 'Korbin Zulauf', 'Female', '2006-07-02', 'Kristen', 'Spinkabury', '38657 Jana Avenue\nFerrychester, ID 14648-4459', '335.805.7183', '841egerhold@hotmail.com', NULL, NULL, '152b09cb7047a56f2ee7f2f43b47c848e92f5017680e02c5470d3f5cf755414e', 0, NULL, '2019-12-27 19:18:59', '2019-12-27 19:18:59', NULL),
 (35, 5, 'd112497c-fd6d-30e8-9344-e6cd7775da8f', 'Garett Oberbrunner', 'Male', '1979-10-24', 'Konghucu', 'Swiftfurt', '530 Wolf Underpass Apt. 743\nEast Aditya, IA 85888-1341', '1-829-334-9762 x073', '432436244frieda30@yahoo.com', NULL, NULL, '66eb234f19ec825c31750c22f2226d800733675000169fed58b311ef31edf7b8', 1, NULL, '2019-12-27 19:18:59', '2019-12-27 19:18:59', NULL),
-(36, 2, '26e5afd9-d7dc-3124-be43-f82ab82ffa4c', 'Rosario Runte', 'Female', '1981-06-10', 'Konghucu', 'Port Susanfort', '8678 Evan Manors\nO\'Connellmouth, CO 44501-0889', '+1.205.626.5818', '3691idaugherty@gmail.com', NULL, NULL, 'b0c39fbb592746ce4e2eb3fc9bd197e042181ee078928b845fab2bf940ab11dc', 0, NULL, '2019-12-27 19:18:59', '2019-12-27 19:18:59', NULL),
+(36, 11, '26e5afd9-d7dc-3124-be43-f82ab82ffa4c', 'Rosario Runte', 'Female', '1981-06-10', 'Islam', 'Port Susanfort', '8678 Evan Manors\r\nO\'Connellmouth, CO 44501-0889', '+1.205.626.5818', '3691idaugherty@gmail.com', NULL, NULL, 'b0c39fbb592746ce4e2eb3fc9bd197e042181ee078928b845fab2bf940ab11dc', 0, NULL, '2019-12-27 19:18:59', '2019-12-28 08:16:17', NULL),
 (37, 4, 'a09a01ae-159e-3e1f-a320-f921d1c432ef', 'Ariel Gutmann', 'Female', '1993-10-04', 'Konghucu', 'Port Quintonchester', '8562 Feil Expressway Apt. 942\nPort Napoleonmouth, WI 54382-6965', '+1-708-355-7212', '8ibahringer@gmail.com', NULL, NULL, '7cb37790b74c687be051f3f7bcfb027f47c00fc793d3bd5d4f1c6c038d988b04', 1, NULL, '2019-12-27 19:18:59', '2019-12-27 19:18:59', NULL),
 (38, 8, '3d815d1f-09fe-3a7b-91db-be485035a2bc', 'Eden Kiehn', 'Male', '2004-05-13', 'Konghucu', 'East Uriahhaven', '1755 Katarina Path\nReyesfort, CA 83703-1364', '+14243069758', '5753hobart99@gmail.com', NULL, NULL, '86c13426a9d17bd596d3291bfbfb51bfaf508819f7fb4c80cd20399b25d4a085', 0, NULL, '2019-12-27 19:19:00', '2019-12-27 19:19:00', NULL),
 (39, 6, '438da2fb-6a4c-327c-a545-aa8aa03d1ad9', 'Winnifred Koepp', 'Male', '2014-07-30', 'Islam', 'Windlerborough', '921 Ruecker Burgs Apt. 506\nAileenfort, WY 30562-8151', '796-599-9602', '59634lizeth.upton@yahoo.com', NULL, NULL, '52d929593a5a09a8d6fbfbd8e962fa3036e26975f43107ec0e8ae424e343c28e', 0, NULL, '2019-12-27 19:19:00', '2019-12-27 19:19:00', NULL),
-(40, 1, '65d8f284-23d6-3e64-bb93-b34a359237f4', 'Lilyan Medhurst V', 'Female', '1987-08-26', 'Budha', 'South Adell', '494 Skiles Ferry\nO\'Connerchester, AZ 04952', '(969) 801-6744', '8368937isabella55@yahoo.com', NULL, NULL, '26b85990fd3ae3f7a1d7d65f8149caa1f46a77d51d3fa157e854cd414011783e', 1, NULL, '2019-12-27 19:19:00', '2019-12-27 19:19:00', NULL);
+(40, 1, '65d8f284-23d6-3e64-bb93-b34a359237f4', 'Lilyan Medhurst V', 'Female', '1987-08-26', 'Budha', 'South Adell', '494 Skiles Ferry\nO\'Connerchester, AZ 04952', '(969) 801-6744', '8368937isabella55@yahoo.com', NULL, NULL, '26b85990fd3ae3f7a1d7d65f8149caa1f46a77d51d3fa157e854cd414011783e', 1, NULL, '2019-12-27 19:19:00', '2019-12-27 19:19:00', NULL),
+(41, 11, NULL, 'Suntun Jos', 'Male', NULL, NULL, NULL, NULL, NULL, 'test@gmail.com', NULL, NULL, '$2y$10$lfDvff3.3tHDKCpVVosEjOHU15AVzjbDqTsoeRfegTLEiAUqAR4km', 1, NULL, '2019-12-29 03:43:22', '2019-12-29 03:43:22', NULL),
+(42, 1, NULL, 'Tania', 'Male', NULL, NULL, NULL, NULL, NULL, 'tania@gmail.com', NULL, NULL, '$2y$10$vQPgfOgotgDqe3OX5mTU3.jv6OhkKcX1ucSLQWP5L/HtZgSY0gEKe', 1, NULL, '2019-12-29 03:53:25', '2019-12-29 03:53:25', NULL),
+(43, 6, NULL, 'boy', 'Male', NULL, NULL, NULL, NULL, NULL, 'boy@gmail.com', NULL, NULL, '$2y$10$z/33.J1ykwyNFy1emBsR.OdGM1811RdRBS3GLMStFivLdIcsYlTwy', 1, NULL, '2019-12-29 04:02:49', '2019-12-29 04:02:49', NULL);
 
 -- --------------------------------------------------------
 
@@ -418,14 +421,14 @@ CREATE TABLE `items` (
 --
 
 INSERT INTO `items` (`id`, `item_type_id`, `name`, `purchase`, `price`, `stock`, `discount`, `description`, `updated_by`, `created_at`, `updated_at`, `deleted_at`) VALUES
-(1, 2, 'itaque', '974611.00', '977930.00', 3, '0.00', 'Unde mollitia sit quod tenetur.', '6', '2019-12-27 19:18:51', '2019-12-27 19:21:08', NULL),
-(2, 1, 'praesentium', '90851.00', '656146.00', 3, '0.33', 'Itaque et consequatur rerum rerum omnis.', '7', '2019-12-27 19:18:51', '2019-12-27 19:21:06', NULL),
+(1, 2, 'itaque', '974611.00', '977930.00', 3, '0.00', 'Unde mollitia sit quod tenetur.', '35', '2019-12-27 19:18:51', '2019-12-28 08:38:35', NULL),
+(2, 3, 'praesentium', '90851.00', '656146.00', 3, '0.33', 'Itaque et consequatur rerum rerum omnis.', '40', '2019-12-27 19:18:51', '2019-12-28 08:20:56', NULL),
 (3, 2, 'corrupti', '77537.00', '611489.00', 0, '0.80', 'Laudantium dicta nostrum non consequatur quis.', '16', '2019-12-27 19:18:51', '2019-12-27 19:20:10', NULL),
 (4, 1, 'explicabo', '187335.00', '451341.00', 0, '0.93', 'Totam odio neque ratione nobis.', '12', '2019-12-27 19:18:51', '2019-12-27 19:20:35', NULL),
-(5, 1, 'nihil', '595973.00', '759327.00', 4, '0.00', 'Aut numquam quasi impedit voluptatem in.', '11', '2019-12-27 19:18:52', '2019-12-27 19:21:14', NULL),
+(5, 1, 'nihil', '595973.00', '759327.00', 4, '0.00', 'Aut numquam quasi impedit voluptatem in.', '11', '2019-12-27 19:18:52', '2019-12-28 19:14:57', NULL),
 (6, 2, 'deserunt', '458473.00', '942375.00', 0, '0.00', 'Vero ut ea eos. At ducimus eaque rem ducimus.', '2', '2019-12-27 19:18:52', '2019-12-27 19:21:12', NULL),
 (7, 2, 'quia', '736809.00', '891033.00', 0, '0.50', 'Voluptatem quis nulla nesciunt laudantium.', '2', '2019-12-27 19:18:52', '2019-12-27 19:20:36', NULL),
-(8, 1, 'sit', '827786.00', '862690.00', 0, '0.81', 'Illum et saepe voluptatem.', '6', '2019-12-27 19:18:52', '2019-12-27 19:20:32', NULL),
+(8, 1, 'sit', '827786.00', '862690.00', 0, '0.81', 'Illum et saepe voluptatem.', '6', '2019-12-27 19:18:52', '2019-12-28 08:37:24', NULL),
 (9, 1, 'omnis', '471825.00', '963278.00', 3, '0.00', 'Commodi quibusdam nam ea hic.', '14', '2019-12-27 19:18:52', '2019-12-27 19:21:13', NULL),
 (10, 1, 'et', '99912.00', '481958.00', 5, '0.00', 'Ipsum magnam et non dolore nihil et.', '10', '2019-12-27 19:18:52', '2019-12-27 19:21:11', NULL),
 (11, 1, 'mollitia', '685270.00', '748672.00', 0, '0.71', 'Quis a eos autem quasi cum voluptatem.', '23', '2019-12-27 19:18:52', '2019-12-28 07:04:14', NULL),
@@ -543,14 +546,14 @@ CREATE TABLE `item_histories` (
 --
 
 INSERT INTO `item_histories` (`id`, `item_id`, `purchase`, `price`, `quantity`, `discount`, `updated_by`, `created_at`, `updated_at`, `deleted_at`) VALUES
-(1, 1, '974611.00', '977930.00', 68, '0.00', '6', '2019-12-27 19:18:51', '2019-12-27 19:18:51', NULL),
+(1, 1, '974611.00', '977930.00', 68, '0.00', '35', '2019-12-27 19:18:51', '2019-12-28 08:38:35', NULL),
 (2, 2, '90851.00', '656146.00', 9, '0.33', '7', '2019-12-27 19:18:51', '2019-12-27 19:18:51', NULL),
 (3, 3, '77537.00', '611489.00', 74, '0.80', '16', '2019-12-27 19:18:51', '2019-12-27 19:18:51', NULL),
 (4, 4, '187335.00', '451341.00', 12, '0.93', '12', '2019-12-27 19:18:51', '2019-12-27 19:18:51', NULL),
 (5, 5, '595973.00', '759327.00', 52, '0.00', '11', '2019-12-27 19:18:52', '2019-12-27 19:18:52', NULL),
 (6, 6, '458473.00', '942375.00', 10, '0.00', '2', '2019-12-27 19:18:52', '2019-12-27 19:18:52', NULL),
 (7, 7, '736809.00', '891033.00', 34, '0.50', '2', '2019-12-27 19:18:52', '2019-12-27 19:18:52', NULL),
-(8, 8, '827786.00', '862690.00', 54, '0.81', '6', '2019-12-27 19:18:52', '2019-12-27 19:18:52', NULL),
+(8, 8, '827786.00', '862690.00', 54, '0.81', '6', '2019-12-27 19:18:52', '2019-12-28 08:37:24', NULL),
 (9, 9, '471825.00', '963278.00', 51, '0.00', '14', '2019-12-27 19:18:52', '2019-12-27 19:18:52', NULL),
 (10, 10, '99912.00', '481958.00', 62, '0.00', '10', '2019-12-27 19:18:52', '2019-12-27 19:18:52', NULL),
 (11, 11, '685270.00', '748672.00', 74, '0.71', '15', '2019-12-27 19:18:52', '2019-12-27 19:18:52', NULL),
@@ -645,7 +648,8 @@ INSERT INTO `item_histories` (`id`, `item_id`, `purchase`, `price`, `quantity`, 
 (100, 100, '708434.00', '999997.00', 39, '0.30', '2', '2019-12-27 19:19:13', '2019-12-27 19:19:13', NULL),
 (101, 11, '685270.00', '748672.00', 1, '0.71', '18', '2019-12-28 06:30:36', '2019-12-28 06:30:36', NULL),
 (102, 11, '685270.00', '748672.00', 2, '0.71', '28', '2019-12-28 06:43:43', '2019-12-28 06:43:43', NULL),
-(103, 11, '685270.00', '748672.00', 4, '0.71', '23', '2019-12-28 07:03:40', '2019-12-28 07:03:40', NULL);
+(103, 11, '685270.00', '748672.00', 4, '0.71', '23', '2019-12-28 07:03:40', '2019-12-28 07:03:40', NULL),
+(104, 2, '90851.00', '656146.00', 0, '0.33', '40', '2019-12-28 08:20:56', '2019-12-28 08:20:56', NULL);
 
 -- --------------------------------------------------------
 
@@ -923,7 +927,12 @@ INSERT INTO `orders` (`id`, `customer_id`, `updated_by`, `created_at`, `updated_
 (193, 198, '40', '2019-12-27 19:21:14', '2019-12-27 19:21:14', NULL),
 (194, 1, '33', '2019-12-28 06:01:13', '2019-12-28 06:30:49', NULL),
 (195, 1, '33', '2019-12-28 07:20:45', '2019-12-28 07:20:45', NULL),
-(196, 1, '26', '2019-12-28 07:37:50', '2019-12-28 07:40:32', NULL);
+(196, 1, '26', '2019-12-28 07:37:50', '2019-12-28 07:40:32', NULL),
+(197, 2, '39', '2019-12-28 08:42:57', '2019-12-28 17:34:31', NULL),
+(198, 5, '39', '2019-12-28 17:34:57', '2019-12-28 17:34:57', NULL),
+(199, 1, '18', '2019-12-28 19:04:22', '2019-12-28 19:04:22', NULL),
+(200, 1, '35', '2019-12-28 19:07:18', '2019-12-28 19:07:18', NULL),
+(201, 1, '27', '2019-12-28 19:13:47', '2019-12-28 19:13:47', NULL);
 
 -- --------------------------------------------------------
 
@@ -1473,7 +1482,12 @@ INSERT INTO `order_has_items` (`order_id`, `item_id`, `price`, `quantity`, `disc
 (65, 69, '962716.00', 6, '0.00', '5776296.00'),
 (194, 11, '748672.00', 2, '0.71', '1063114.24'),
 (195, 88, '971866.00', 13, '0.00', '12634258.00'),
-(196, 88, '971866.00', 11, '0.00', '10690526.00');
+(196, 88, '971866.00', 11, '0.00', '10690526.00'),
+(197, 1, '977930.00', 2, '0.00', '1955860.00'),
+(198, 11, '748672.00', 1, '0.71', '531557.12'),
+(199, 5, '759327.00', 2, '0.00', '1518654.00'),
+(200, 5, '759327.00', 2, '0.00', '1518654.00'),
+(201, 5, '759327.00', 1, '0.00', '759327.00');
 
 -- --------------------------------------------------------
 
@@ -1706,7 +1720,10 @@ INSERT INTO `payments` (`id`, `payment_method_id`, `order_id`, `card_number`, `d
 (192, 8, 193, 4916024213720654, '2019-12-29 02:21:14', '3185347.88', 'Completed', '40', '2019-12-27 19:21:14', '2019-12-27 19:21:14', NULL),
 (193, 10, 194, NULL, '2019-12-29 00:00:00', '1063114.24', 'Submitted', '33', '2019-12-28 07:04:14', '2019-12-28 07:04:14', NULL),
 (194, 10, 195, NULL, '2019-12-29 00:00:00', '971866.00', 'Submitted', '33', '2019-12-28 07:26:45', '2019-12-28 07:26:45', NULL),
-(195, 10, 196, NULL, '2019-12-29 00:00:00', '10690526.00', 'Submitted', '26', '2019-12-28 07:41:59', '2019-12-28 07:41:59', NULL);
+(195, 10, 196, NULL, '2019-12-29 00:00:00', '10690526.00', 'Submitted', '26', '2019-12-28 07:41:59', '2019-12-28 07:41:59', NULL),
+(196, 10, 199, NULL, '2019-12-30 09:04:37', '1518654.00', 'Canceled', '18', '2019-12-28 19:04:50', '2019-12-28 19:06:35', NULL),
+(197, 10, 200, NULL, '2019-12-30 09:07:24', '1518654.00', 'Canceled', '26', '2019-12-28 19:07:28', '2019-12-28 19:07:53', NULL),
+(198, 10, 201, NULL, '2019-12-30 09:13:36', '759327.00', 'Canceled', '12', '2019-12-28 19:13:47', '2019-12-28 19:14:57', NULL);
 
 -- --------------------------------------------------------
 
@@ -1845,7 +1862,7 @@ INSERT INTO `positions` (`id`, `name`, `updated_by`, `created_at`, `updated_at`,
 (8, 'Interviewer', '0', '2019-12-27 19:18:58', '2019-12-27 19:18:58', NULL),
 (9, 'Mechanical Drafter', '6', '2019-12-27 19:18:58', '2019-12-27 19:18:58', NULL),
 (10, 'Life Scientists', '4', '2019-12-27 19:18:58', '2019-12-27 19:18:58', NULL),
-(11, 'Cashier', '10', '2019-12-28 03:18:07', '2019-12-28 03:18:07', NULL);
+(11, 'Cashier', '2', '2019-12-28 03:18:07', '2019-12-29 03:11:28', NULL);
 
 -- --------------------------------------------------------
 
@@ -1960,6 +1977,13 @@ CREATE TABLE `users` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `users`
+--
+
+INSERT INTO `users` (`id`, `name`, `email`, `email_verified_at`, `password`, `remember_token`, `created_at`, `updated_at`) VALUES
+(1, 'aman', 'aman@gmail.com', NULL, '$2y$10$yebXMC1KpJR4ZXQ4SNyQmuu2.RLxN1e1/yFLQic4K/6FGwu5pATL.', NULL, '2019-12-29 00:57:17', '2019-12-29 00:57:17');
 
 --
 -- Indexes for dumped tables
@@ -2099,7 +2123,7 @@ ALTER TABLE `customers`
 -- AUTO_INCREMENT for table `employees`
 --
 ALTER TABLE `employees`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=41;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=44;
 
 --
 -- AUTO_INCREMENT for table `failed_jobs`
@@ -2117,7 +2141,7 @@ ALTER TABLE `items`
 -- AUTO_INCREMENT for table `item_histories`
 --
 ALTER TABLE `item_histories`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=104;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=105;
 
 --
 -- AUTO_INCREMENT for table `item_types`
@@ -2135,13 +2159,13 @@ ALTER TABLE `migrations`
 -- AUTO_INCREMENT for table `orders`
 --
 ALTER TABLE `orders`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=197;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=202;
 
 --
 -- AUTO_INCREMENT for table `payments`
 --
 ALTER TABLE `payments`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=196;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=199;
 
 --
 -- AUTO_INCREMENT for table `payment_methods`
@@ -2171,7 +2195,7 @@ ALTER TABLE `roles`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- Constraints for dumped tables

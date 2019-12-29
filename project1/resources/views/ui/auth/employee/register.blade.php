@@ -22,7 +22,7 @@
     <!-- Main content -->
     <section class="content">
         <div class="container-fluid">
-            <form method="POST" action="{{ route('employee.register') }}">
+            <form id="form" method="POST">
                 @csrf
 
                 <div class="form-group row">
@@ -41,7 +41,7 @@
                 </div>
 
                 <div class="form-group row">
-                    <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('Position') }}</label>
+                    <label for="position_id" class="col-md-4 col-form-label text-md-right">{{ __('Position') }}</label>
 
                     <div class="col-md-6">
                         <select class="form-control @error('position_id') is-invalid @enderror" id="position_id" name="position_id" required autocomplete="position_id" autofocus></select>

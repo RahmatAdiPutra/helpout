@@ -37,10 +37,20 @@ class RoleRequest extends FormRequest
         } else {
             $role = new Role();
         }
-        
+
         foreach ($post as $field => $value) {
             $role->$field = $value;
         }
         $role->save();
+
+        $permissions = [];
+        if (empty(request()->permission_id) === false) {
+            for ($i=0; $i < count(request()->permission_id); $i++) {
+                $permissions[] = [
+                    'permission_id' => request()->permission_id[$i]
+                ];
+            }
+            $role->permissions()->sync($permissions);
+        }
     }
 }

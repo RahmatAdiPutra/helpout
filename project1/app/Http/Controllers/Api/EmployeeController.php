@@ -46,6 +46,11 @@ class EmployeeController extends Controller
         if (empty($searchTerm['value']) === false) {
             $q = '%' . str_replace(' ', '%', trim($searchTerm['value'])) . '%';
             $query->where('name', 'like', $q);
+        } else {
+            if (empty($searchTerm) === false) {
+                $q = '%' . str_replace(' ', '%', trim($searchTerm)) . '%';
+                $query->where('name', 'like', $q);
+            }
         }
 
         // for get data total and last page,

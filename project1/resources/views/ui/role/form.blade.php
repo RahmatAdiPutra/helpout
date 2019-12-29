@@ -16,6 +16,10 @@
                         <label for="name">Name</label>
                         <input type="text" class="form-control" id="name" name="name" placeholder="Enter role name" required>
                     </div>
+                    <div class="form-group">
+                        <label for="name">Permission</label>
+                        <select class="form-control" multiple="multiple" id="permission_id" name="permission_id[]" required></select>
+                    </div>
                 </div>
                 <div class="modal-footer" id="form-footer">
                     <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>

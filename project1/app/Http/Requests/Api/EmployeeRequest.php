@@ -47,10 +47,20 @@ class EmployeeRequest extends FormRequest
         } else {
             $employee = new Employee();
         }
-        
+
         foreach ($post as $field => $value) {
             $employee->$field = $value;
         }
         $employee->save();
+
+        $roles = [];
+        if (empty(request()->role_id) === false) {
+            for ($i=0; $i < count(request()->role_id); $i++) {
+                $roles[] = [
+                    'role_id' => request()->role_id[$i]
+                ];
+            }
+            $employee->roles()->sync($roles);
+        }
     }
 }

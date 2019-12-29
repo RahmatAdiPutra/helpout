@@ -63,14 +63,14 @@
         columnList.push(`<th style="font-size:xx-small">${upperCaseFirst(item.name)}</th>`);
     });
     $('#detailedTable thead').html('<tr>'+columnList.join(' ')+'</tr>');
-    
+
     var table = $('#detailedTable').DataTable(
         $.extend(true, w.dataTableDefaultOptions, dataTableOptions)
     );
 
     $('div.toolbar-hide').html(`<input type="number" class="form-control form-control-sm" id="hide-column" style="font-size:xx-small" min="0" max="${dataTableOptions.columns.length - 1}" size="4" placeholder="Hide column">`);
     $('div.toolbar-create').html('<button type="button" class="btn btn-default btn-sm" data-toggle="modal" data-target="#modalForm" id="create">Create</button>');
-    
+
     $(toolbar + ' .toolbar-hide').on('change', '#hide-column', hideColumn);
     $(toolbar + ' .toolbar-create').on('click', '#create', createData);
     $('#detailedTable tbody').on('click', '#update', updateData);
@@ -83,6 +83,7 @@
     function createData(event) {
         event.preventDefault();
         auth();
+        selectPermission();
         $('#form-header .modal-title').html(upperCaseFirst($(this).attr('id')));
     }
 
@@ -99,6 +100,11 @@
                 $('#modalForm').modal('show');
                 form.find('#id').val(response.payloads.id);
                 form.find('#name').val(response.payloads.name);
+                selectPermission();
+                response.payloads.permissions.forEach((v, index) => {
+                    var option = new Option(v.name, v.id, true, true);
+                    $('#permission_id').append(option).trigger('change');
+                });
             },
             error: function (response) {}
         });
@@ -153,6 +159,39 @@
         form.find('#id').val('');
         form.find('#name').val('');
         form.find('#updated_by').val('');
+        form.find('#permission_id').val('');
+    }
+
+    function selectPermission(val) {
+        $('#permission_id').select2({
+            multiple:true,
+            minimumInputLength: 1,
+            allowClear: true,
+            placeholder: 'Select permissions',
+            cache: true,
+            ajax: {
+                dataType: 'json',
+                url: $('base').attr('href') + '/api/permission/data',
+                delay: 800,
+                data: function(params) {
+                    return {
+                        search: params.term
+                    };
+                },
+                processResults: function (data, page) {
+                    var permission = data.payloads.data.map(function(data, i) {
+                        return {
+                            id : data.id,
+                            text : data.name
+                        }
+                    });
+                    return {
+                        results: permission
+                    };
+                },
+            }
+        });
+        $('#permission_id').val(val).trigger('change');
     }
 
     function auth() {

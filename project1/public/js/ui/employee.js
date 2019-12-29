@@ -96,14 +96,14 @@
         columnList.push(`<th style="font-size:xx-small">${upperCaseFirst(item.name)}</th>`);
     });
     $('#detailedTable thead').html('<tr>'+columnList.join(' ')+'</tr>');
-    
+
     var table = $('#detailedTable').DataTable(
         $.extend(true, w.dataTableDefaultOptions, dataTableOptions)
     );
 
     $('div.toolbar-hide').html(`<input type="number" class="form-control form-control-sm" id="hide-column" style="font-size:xx-small" min="0" max="${dataTableOptions.columns.length - 1}" size="4" placeholder="Hide column">`);
     $('div.toolbar-create').html('<button type="button" class="btn btn-default btn-sm" data-toggle="modal" data-target="#modalForm" id="create">Create</button>');
-    
+
     $(toolbar + ' .toolbar-hide').on('change', '#hide-column', hideColumn);
     $(toolbar + ' .toolbar-create').on('click', '#create', createData);
     $('#detailedTable tbody').on('click', '#update', updateData);
@@ -122,6 +122,7 @@
         selectPosition();
         selectReligion();
         selectStatus();
+        selectRole();
         $('#form-header .modal-title').html(upperCaseFirst($(this).attr('id')));
     }
 
@@ -155,6 +156,10 @@
                         selectStatus($.inArray(response.payloads.status,res.payloads.status));
                     },
                     error: function (response) {}
+                });
+                response.payloads.roles.forEach((v, index) => {
+                    var option = new Option(v.name, v.id, true, true);
+                    $('#role_id').append(option).trigger('change');
                 });
             },
             error: function (response) {}
@@ -220,6 +225,30 @@
         form.find('#phone_number').val('');
         form.find('#email').val('');
         form.find('#status').val('');
+        form.find('#role_id').val('');
+    }
+
+    function selectRole(val) {
+        $.ajax({
+            method: 'GET',
+            dataType: 'json',
+            cache: true,
+            url: $('base').attr('href') + '/api/role/data',
+            success: function (response) {
+                var role = response.payloads.data.map(function(data, i) {
+                    return {
+                        id : data.id,
+                        text : data.name
+                    }
+                });
+                $('#role_id').select2({
+                    placeholder: "Select roles",
+                    data: role
+                });
+                $('#role_id').val(val).trigger('change');
+            },
+            error: function (response) {}
+        });
     }
 
     function selectPosition(val) {

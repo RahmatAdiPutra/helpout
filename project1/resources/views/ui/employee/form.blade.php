@@ -26,9 +26,19 @@
                             </div>
                         </div>
                     </div>
-                    <div class="form-group">
-                        <label for="position">Position</label>
-                        <select class="form-control" id="position_id" name="position_id" required></select>
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <label for="religion">Religion</label>
+                                <select class="form-control" id="religion" name="religion" required></select>
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <label for="position">Position</label>
+                                <select class="form-control" id="position_id" name="position_id" required></select>
+                            </div>
+                        </div>
                     </div>
                     <div class="row">
                         <div class="col-sm-6">
@@ -55,8 +65,9 @@
                     <div class="row">
                         <div class="col-sm-6">
                             <div class="form-group">
-                                <label for="religion">Religion</label>
-                                <select class="form-control" id="religion" name="religion" required></select>
+                                <label for="phoneNumber">Phone Number</label>
+                                <input type="text" class="form-control" id="phone_number" name="phone_number"
+                                    placeholder="Enter employee phone number" required>
                             </div>
                         </div>
                         <div class="col-sm-6">
@@ -69,30 +80,29 @@
                     <div class="row">
                         <div class="col-sm-6">
                             <div class="form-group">
-                                <label for="phoneNumber">Phone Number</label>
-                                <input type="text" class="form-control" id="phone_number" name="phone_number"
-                                    placeholder="Enter employee phone number" required>
-                            </div>
-                        </div>
-                        <div class="col-sm-6">
-                            <div class="form-group">
                                 <label for="email">Email</label>
                                 <input type="email" class="form-control" id="email" name="email"
                                     placeholder="Enter employee email" required>
                             </div>
                         </div>
-                    </div>
-                    <div class="row">
                         <div class="col-sm-6">
                             <div class="form-group">
                                 <label for="city">City</label>
                                 <input type="text" class="form-control" id="city" name="city" placeholder="Enter employee city" required>
                             </div>
                         </div>
+                    </div>
+                    <div class="row">
                         <div class="col-sm-6">
                             <div class="form-group">
                                 <label for="address">Address</label>
                                 <textarea class="form-control" id="address" name="address" rows="3" placeholder="Enter employee address" required></textarea>
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <label for="name">Role</label>
+                                <select class="form-control" multiple="multiple" id="role_id" name="role_id[]" required></select>
                             </div>
                         </div>
                     </div>

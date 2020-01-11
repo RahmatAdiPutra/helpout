@@ -302,7 +302,6 @@
 
     function createData(event) {
         event.preventDefault();
-        auth();
         var index = $('#detailedTableSecond tbody').children();
         $('#detailedTableSecond tbody').append(`
             <tr>
@@ -320,7 +319,6 @@
 
     function updateData(event) {
         event.preventDefault();
-        auth();
         $('#toggle-order').trigger('click');
         var id = $(this).attr("data-id");
         $.ajax({
@@ -379,7 +377,6 @@
             formData.append('discount[]', ($('#discount_'+index).val() / 100));
             formData.append('amount[]', $('#amount_'+index).val());
         }
-        formData.append('updated_by', $('#updated_by').val());
         $.ajax({
             method: 'POST',
             dataType: 'json',
@@ -409,7 +406,6 @@
             formData.append('discount[]', ($('#discount_'+index).val() / 100));
             formData.append('amount[]', $('#amount_'+index).val());
         }
-        formData.append('updated_by', $('#updated_by').val());
         formData.append('payment_method_id', $('#payment_method_id').val());
         formData.append('card_number', $('#card_number').val());
         formData.append('status', $('#status').val());
@@ -584,10 +580,6 @@
         $('#total_amount').val($.number(amount, 2));
         $('#pay').prop('disabled', false);
         $('#save-order').prop('disabled', false);
-    }
-    
-    function auth() {
-        $('#updated_by').val(dataAuth.id);
     }
 
     function hideColumn(event) {

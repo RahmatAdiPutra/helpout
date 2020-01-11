@@ -18,7 +18,7 @@
 // });
 
 Route::group([
-    // 'middleware' => ['auth'],
+    'middleware' => ['role.permission'],
     'namespace' => 'Api'
 ],function () {
     Route::group([
@@ -28,101 +28,112 @@ Route::group([
     });
 
     Route::group([
-        'prefix' => 'customer'
+        'prefix' => 'customer',
+        'as' => 'customer.'
     ],function () {
-        Route::get('/data', 'CustomerController@data');
-        Route::get('/{customer}', 'CustomerController@show');
-        Route::post('/', 'CustomerController@post');
-        Route::delete('/{customer}', 'CustomerController@destroy');
+        Route::get('/data', 'CustomerController@data')->name('data');
+        Route::get('/{customer}', 'CustomerController@show')->name('show');
+        Route::post('/', 'CustomerController@post')->name('post');
+        Route::delete('/{customer}', 'CustomerController@destroy')->name('destroy');
     });
 
     Route::group([
-        'prefix' => 'employee'
+        'prefix' => 'employee',
+        'as' => 'employee.'
     ],function () {
-        Route::get('/data', 'EmployeeController@data');
-        Route::get('/{employee}', 'EmployeeController@show');
-        Route::post('/', 'EmployeeController@post');
-        Route::delete('/{employee}', 'EmployeeController@destroy');
+        Route::get('/data', 'EmployeeController@data')->name('data');
+        Route::get('/{employee}', 'EmployeeController@show')->name('show');
+        Route::post('/', 'EmployeeController@post')->name('post');
+        Route::delete('/{employee}', 'EmployeeController@destroy')->name('destroy');
     });
 
     Route::group([
-        'prefix' => 'item'
+        'prefix' => 'item',
+        'as' => 'item.'
     ],function () {
-        Route::get('/data', 'ItemController@data');
-        Route::get('/{item}', 'ItemController@show');
-        Route::post('/', 'ItemController@post');
-        Route::delete('/{item}', 'ItemController@destroy');
+        Route::get('/data', 'ItemController@data')->name('data');
+        Route::get('/{item}', 'ItemController@show')->name('show');
+        Route::post('/', 'ItemController@post')->name('post');
+        Route::delete('/{item}', 'ItemController@destroy')->name('destroy');
     });
 
     Route::group([
-        'prefix' => 'item-history'
+        'prefix' => 'item-history',
+        'as' => 'item-history.'
     ],function () {
-        Route::get('/data', 'ItemHistoryController@data');
-        Route::get('/{itemHistory}', 'ItemHistoryController@show');
-        Route::post('/', 'ItemHistoryController@post');
-        Route::delete('/{itemHistory}', 'ItemHistoryController@destroy');
+        Route::get('/data', 'ItemHistoryController@data')->name('data');
+        Route::get('/{itemHistory}', 'ItemHistoryController@show')->name('show');
+        Route::post('/', 'ItemHistoryController@post')->name('post');
+        Route::delete('/{itemHistory}', 'ItemHistoryController@destroy')->name('destroy');
     });
 
     Route::group([
-        'prefix' => 'item-type'
+        'prefix' => 'item-type',
+        'as' => 'item-type.'
     ],function () {
-        Route::get('/data', 'ItemTypeController@data');
-        Route::get('/{itemType}', 'ItemTypeController@show');
-        Route::post('/', 'ItemTypeController@post');
-        Route::delete('/{itemType}', 'ItemTypeController@destroy');
+        Route::get('/data', 'ItemTypeController@data')->name('data');
+        Route::get('/{itemType}', 'ItemTypeController@show')->name('show');
+        Route::post('/', 'ItemTypeController@post')->name('post');
+        Route::delete('/{itemType}', 'ItemTypeController@destroy')->name('destroy');
     });
 
     Route::group([
-        'prefix' => 'order'
+        'prefix' => 'order',
+        'as' => 'order.'
     ],function () {
-        Route::get('/data', 'OrderController@data');
-        Route::get('/{order}', 'OrderController@show');
-        Route::post('/', 'OrderController@post');
-        Route::delete('/{order}', 'OrderController@destroy');
+        Route::get('/data', 'OrderController@data')->name('data');
+        Route::get('/{order}', 'OrderController@show')->name('show');
+        Route::post('/', 'OrderController@post')->name('post');
+        Route::delete('/{order}', 'OrderController@destroy')->name('destroy');
     });
 
     Route::group([
-        'prefix' => 'payment'
+        'prefix' => 'payment',
+        'as' => 'payment.'
     ],function () {
-        Route::get('/data', 'PaymentController@data');
-        Route::get('/{payment}', 'PaymentController@show');
-        Route::post('/', 'PaymentController@post');
-        Route::delete('/{payment}', 'PaymentController@destroy');
+        Route::get('/data', 'PaymentController@data')->name('data');
+        Route::get('/{payment}', 'PaymentController@show')->name('show');
+        Route::post('/', 'PaymentController@post')->name('post');
+        Route::delete('/{payment}', 'PaymentController@destroy')->name('destroy');
     });
 
     Route::group([
-        'prefix' => 'payment-method'
+        'prefix' => 'payment-method',
+        'as' => 'payment-method.'
     ],function () {
-        Route::get('/data', 'PaymentMethodController@data');
-        Route::get('/{paymentMethod}', 'PaymentMethodController@show');
-        Route::post('/', 'PaymentMethodController@post');
-        Route::delete('/{paymentMethod}', 'PaymentMethodController@destroy');
+        Route::get('/data', 'PaymentMethodController@data')->name('data');
+        Route::get('/{paymentMethod}', 'PaymentMethodController@show')->name('show');
+        Route::post('/', 'PaymentMethodController@post')->name('post');
+        Route::delete('/{paymentMethod}', 'PaymentMethodController@destroy')->name('destroy');
     });
 
     Route::group([
-        'prefix' => 'permission'
+        'prefix' => 'permission',
+        'as' => 'permission.'
     ],function () {
-        Route::get('/data', 'PermissionController@data');
-        Route::get('/{permission}', 'PermissionController@show');
-        Route::post('/', 'PermissionController@post');
-        Route::delete('/{permission}', 'PermissionController@destroy');
+        Route::get('/data', 'PermissionController@data')->name('data');
+        Route::get('/{permission}', 'PermissionController@show')->name('show');
+        Route::post('/', 'PermissionController@post')->name('post');
+        Route::delete('/{permission}', 'PermissionController@destroy')->name('destroy');
     });
 
     Route::group([
-        'prefix' => 'position'
+        'prefix' => 'position',
+        'as' => 'position.'
     ],function () {
-        Route::get('/data', 'PositionController@data');
-        Route::get('/{position}', 'PositionController@show');
-        Route::post('/', 'PositionController@post');
-        Route::delete('/{position}', 'PositionController@destroy');
+        Route::get('/data', 'PositionController@data')->name('data');
+        Route::get('/{position}', 'PositionController@show')->name('show');
+        Route::post('/', 'PositionController@post')->name('post');
+        Route::delete('/{position}', 'PositionController@destroy')->name('destroy');
     });
 
     Route::group([
-        'prefix' => 'role'
+        'prefix' => 'role',
+        'as' => 'role.'
     ],function () {
-        Route::get('/data', 'RoleController@data');
-        Route::get('/{role}', 'RoleController@show');
-        Route::post('/', 'RoleController@post');
-        Route::delete('/{role}', 'RoleController@destroy');
+        Route::get('/data', 'RoleController@data')->name('data');
+        Route::get('/{role}', 'RoleController@show')->name('show');
+        Route::post('/', 'RoleController@post')->name('post');
+        Route::delete('/{role}', 'RoleController@destroy')->name('destroy');
     });
 });

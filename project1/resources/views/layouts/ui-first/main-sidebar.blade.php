@@ -21,8 +21,8 @@
 
         <!-- Sidebar Menu -->
         <nav class="mt-2">
-            <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
-                <li class="nav-header">MASTER</li>
+            <ul id="menu" class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+                <!-- <li class="nav-header">MASTER</li>
                 <li class="nav-item">
                     <a href="{{ url('/position') }}" class="nav-link">
                         <i class="nav-icon far fa-calendar-alt"></i>
@@ -127,26 +127,26 @@
                         </p>
                     </a>
                     <ul class="nav nav-treeview">
-                        {{-- <li class="nav-item">
+                        <li class="nav-item">
                             <a href="{{ url('/') }}" class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>Role Permission</p>
                             </a>
-                        </li> --}}
+                        </li>
                         <li class="nav-item">
                             <a href="{{ url('/employee-register') }}" class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>Register</p>
                             </a>
                         </li>
-                        {{-- <li class="nav-item">
+                        <li class="nav-item">
                             <a href="{{ url('/') }}" class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>Forgot Password</p>
                             </a>
-                        </li> --}}
+                        </li>
                     </ul>
-                </li>
+                </li> -->
             </ul>
         </nav>
         <!-- /.sidebar-menu -->

@@ -154,7 +154,6 @@
 
     function updateData(event) {
         event.preventDefault();
-        auth();
         $('#form-header .modal-title').html(upperCaseFirst($(this).attr('id')));
         var id = $(this).attr("data-id");
         $.ajax({
@@ -283,10 +282,6 @@
             },
             error: function (response) {}
         });
-    }
-
-    function auth() {
-        $('#updated_by').val(dataAuth.id);
     }
 
     function hideColumn(event) {

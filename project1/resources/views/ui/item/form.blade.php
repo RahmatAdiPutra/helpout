@@ -11,7 +11,6 @@
             <form role="form" id="form" autocomplete="off" method="POST">
                 <div class="modal-body" id="form-body">
                     <input type="text" class="form-control" id="id" name="id" hidden>
-                    <input type="text" class="form-control" id="updated_by" name="updated_by" hidden>
                     <div class="row">
                         <div class="col-sm-6">
                             <div class="form-group">

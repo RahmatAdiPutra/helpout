@@ -1,6 +1,32 @@
 (function (w, $) {
     'use strict';
 
+    var baseUrl = $('base').attr('href');
+    var menu = localStorage.getItem('menu');
+    
+    if (menu.length) {
+        var menuList = [];
+        $.map($.parseJSON(menu), function(value,index) {
+            menuList.push(`
+                <li class="nav-item">
+                    <a href="${baseUrl}/${value}" class="nav-link">
+                        <i class="far fa-circle nav-icon"></i>
+                        <p>
+                            ${value}
+                        </p>
+                    </a>
+                </li>
+            `);
+        });
+        $('#menu').html(menuList.join(' '));
+    }
+
+    $.ajaxSetup({
+        beforeSend: function (xhr) {
+           xhr.setRequestHeader('token', localStorage.getItem('token'));        
+        }
+    });
+
     toastr.options = {
         closeButton: true,
         debug: false,

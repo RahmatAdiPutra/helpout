@@ -68,24 +68,24 @@ class TestController extends Controller
     {
         $menuPermission = [
             'menu' => [
-                'Position.',
-                'Employee.',
-                'Role.',
-                'Permission.',
-                'Customer.',
-                'ItemType.',
-                'Item.',
-                'ItemHistory.',
-                'Order.',
-                'PaymentMethod.',
-                'Payment.'
+                'position.',
+                'employee.',
+                'role.',
+                'permission.',
+                'customer.',
+                'item-type.',
+                'item.',
+                'item-history.',
+                'order.',
+                'payment-method.',
+                'payment.'
             ],
             'permission' => [
                 '*',
-                'Create',
-                'Read',
-                'Update',
-                'Delete'
+                'data',
+                'show',
+                'post',
+                'destroy'
             ]
         ];
         $gender = [

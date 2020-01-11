@@ -122,7 +122,6 @@
 
     function createData(event) {
         event.preventDefault();
-        auth();
         selectReligion();
         selectStatus();
         $('#form-header .modal-title').html(upperCaseFirst($(this).attr('id')));
@@ -130,7 +129,6 @@
 
     function updateData(event) {
         event.preventDefault();
-        auth();
         $('#form-header .modal-title').html(upperCaseFirst($(this).attr('id')));
         var id = $(this).attr("data-id");
         $.ajax({
@@ -213,7 +211,6 @@
         form.find('#phone_number').val('');
         form.find('#email').val('');
         form.find('#status').val('');
-        form.find('#updated_by').val('');
     }
 
     function selectReligion(val) {
@@ -248,10 +245,6 @@
             },
             error: function (response) {}
         });
-    }
-
-    function auth() {
-        form.find('#updated_by').val(dataAuth.id);
     }
 
     function hideColumn(event) {

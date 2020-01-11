@@ -50,9 +50,9 @@
 <script src="{{ asset('adminlte3/plugins/jquery-number/jquery.number.js') }}"></script>
 <!-- Page -->
 <script src="{{ asset('js/page.js') }}"></script>
+<!-- Auth -->
+<script src="{{ asset('js/auth.js') }}"></script>
+<!-- MSI -->
 <script src="{{ asset('js/msi.js') }}"></script>
 
 @yield('jsSection')
-<script>
-    window.dataAuth = {!! json_encode(Auth::user()) !!};
-</script>

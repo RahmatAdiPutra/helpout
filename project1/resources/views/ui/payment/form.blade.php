@@ -12,7 +12,6 @@
                 <div class="modal-body" id="form-body">
                     <input type="text" class="form-control" id="id" name="id" hidden>
                     <input type="text" class="form-control" id="order_id" name="order_id" hidden>
-                    <input type="text" class="form-control" id="updated_by" name="updated_by" hidden>
                     <div class="form-group">
                         <label for="paymentMethod">Payment Method</label>
                         <select class="form-control" id="payment_method_id" name="payment_method_id" required></select>

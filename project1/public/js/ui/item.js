@@ -128,7 +128,6 @@
 
     function createData(event) {
         event.preventDefault();
-        auth();
         selectItemType();
         form.find('#current_stock').val(0);
         form.find('#stock').val(0);
@@ -138,7 +137,6 @@
 
     function updateData(event) {
         event.preventDefault();
-        auth();
         $('#form-header .modal-title').html(upperCaseFirst($(this).attr('id')));
         var id = $(this).attr("data-id");
         $.ajax({
@@ -220,7 +218,6 @@
         form.find('#stock').val('');
         form.find('#discount').val('');
         form.find('#description').val('');
-        form.find('#updated_by').val('');
     }
 
     function selectItemType(val) {
@@ -244,10 +241,6 @@
             },
             error: function (response) {}
         });
-    }
-    
-    function auth() {
-        form.find('#updated_by').val(dataAuth.id);
     }
 
     function hideColumn(event) {

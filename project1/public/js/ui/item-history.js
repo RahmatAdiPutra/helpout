@@ -150,7 +150,6 @@
 
     function createData(event) {
         event.preventDefault();
-        auth();
         $('#item_id').prop('disabled', false);
         selectItem();
         form.find('#current_stock').val(0);
@@ -161,7 +160,6 @@
 
     function updateData(event) {
         event.preventDefault();
-        auth();
         $('#item_id').prop('disabled', 'disabled');
         $('#form-header .modal-title').html(upperCaseFirst($(this).attr('id')));
         var id = $(this).attr("data-id");
@@ -252,7 +250,6 @@
         form.find('#current_stock').val('');
         form.find('#quantity').val('');
         form.find('#discount').val('');
-        form.find('#updated_by').val('');
     }
 
     function selectItem(val) {
@@ -302,10 +299,6 @@
             },
             error: function (response) {}
         });
-    }
-    
-    function auth() {
-        form.find('#updated_by').val(dataAuth.id);
     }
 
     function hideColumn(event) {

@@ -93,7 +93,7 @@ class Employee extends Authenticatable
 
     public function roles()
     {
-        return $this->belongsToMany(Role::class, 'employee_has_roles', 'employee_id', 'role_id');
+        return $this->belongsToMany(Role::class, 'employee_has_roles', 'employee_id', 'role_id')->with('permissions');
     }
 
     public function getStatusAttribute($value)
